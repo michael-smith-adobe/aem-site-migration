@@ -1,0 +1,91 @@
+.accordion-footer details {
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.accordion-footer details + details {
+  margin-top: 0;
+  border-top: none;
+}
+
+.accordion-footer details p {
+  margin: 0.4em 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.accordion-footer details ul,
+.accordion-footer details ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.accordion-footer details li {
+  margin: 0.4em 0;
+}
+
+.accordion-footer details a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.accordion-footer details a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+.accordion-footer details summary {
+  position: relative;
+  padding: var(--spacing-s);
+  padding-right: 46px;
+  cursor: pointer;
+  list-style: none;
+  overflow: auto;
+  transition: background-color 0.2s;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.accordion-footer details[open] summary {
+  background-color: var(--light-color);
+}
+
+.accordion-footer details summary:focus,
+.accordion-footer details summary:hover {
+  background-color: var(--light-color);
+}
+
+.accordion-footer details summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-footer details summary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: var(--spacing-s);
+  transform: translateY(-50%) rotate(135deg);
+  width: 6px;
+  height: 6px;
+  border: 2px solid var(--text-color);
+  border-width: 2px 2px 0 0;
+  transition: transform 0.2s;
+}
+
+.accordion-footer details[open] summary::after {
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.accordion-footer details .accordion-footer-item-body {
+  padding: var(--spacing-s);
+}
+
+.accordion-footer details[open] .accordion-footer-item-body {
+  border-top: 1px solid var(--border-light);
+  background-color: var(--background-color);
+}

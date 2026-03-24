@@ -1,0 +1,42 @@
+{
+  "variantName": "accordion-footer",
+  "baseBlock": "accordion",
+  "version": "1.0.0",
+  "created": "2025-12-09T23:37:34.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.jared.com/search?text=diamond%20bracelets&icid=TEST:Dyno:CATEGORIES:DIAMOND%20BRACELETS",
+    "originPage": "Product search results page footer",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "footer-navigation",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "title + expandable link sections",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "footer navigation sections",
+      "collapsible site links",
+      "mobile-friendly footer menus",
+      "organizational link groups"
+    ],
+    "notSuitableFor": [
+      "FAQ sections",
+      "article content accordions",
+      "product specification toggles"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "/content/search"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2025-12-09T23:37:34.000Z"
+  }
+}

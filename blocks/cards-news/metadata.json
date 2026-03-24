@@ -1,0 +1,40 @@
+{
+  "variantName": "cards-news",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-02-12T20:25:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.citigroup.com/global/businesses/markets",
+    "originPage": "Corporate business unit landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "news-articles",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "category + title + date + link",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "press release listings",
+      "news article cards",
+      "text-only content cards",
+      "event or announcement listings"
+    ],
+    "notSuitableFor": [
+      "image-heavy content cards",
+      "product listings",
+      "feature highlight cards"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/global/businesses/markets"],
+    "reuseCount": 1,
+    "lastUsed": "2026-02-12T20:25:00.000Z"
+  }
+}

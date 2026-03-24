@@ -1,0 +1,40 @@
+{
+  "variantName": "tabs-services",
+  "baseBlock": "tabs",
+  "version": "1.0.0",
+  "created": "2026-02-12T20:25:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.citigroup.com/global/businesses/markets",
+    "originPage": "Corporate business unit landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "service-offerings",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "tab-label + multi-paragraph-description",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "business service descriptions",
+      "product category explanations",
+      "division overview pages",
+      "capability showcase sections"
+    ],
+    "notSuitableFor": [
+      "FAQ sections",
+      "simple feature comparisons",
+      "image-heavy tab content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/global/businesses/markets"],
+    "reuseCount": 1,
+    "lastUsed": "2026-02-12T20:25:00.000Z"
+  }
+}

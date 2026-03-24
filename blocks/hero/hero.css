@@ -1,37 +1,280 @@
-.hero-container .hero-wrapper {
+/*
+ * Hero Block - Citi Credit Cards
+ * EDS auto-hero splits the grid table into two sections:
+ * Section 1 (.hero-container): picture + h1 (card image + card name)
+ * Section 2 (.hero-container): content (badge, heading, offer, CTA)
+ *
+ * Desktop: overlay layout — content panel on left over full-bleed image
+ * Mobile: stacked — image on top, content below
+ */
+
+/* == Section containers == */
+.hero-container {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-container > .hero-wrapper {
   max-width: unset;
   padding: 0;
 }
 
+/* == Hero block base == */
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  overflow: hidden;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+/* == First hero section: Image + Card Name == */
+.hero-container:first-of-type .hero {
+  position: relative;
+  min-height: 300px;
+  background-color: var(--citi-dark);
+}
+
+/* The picture + h1 are in a <p> tag together */
+.hero > div > div > p:has(picture) {
+  margin: 0;
+  position: relative;
 }
 
 .hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  display: block;
+  line-height: 0;
 }
 
 .hero img {
-  object-fit: cover;
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
+/* Citi / AAdvantage co-brand logo — bottom-right of hero image */
+.hero-cobrand-logo {
+  display: none;
+}
+
+/* Card name h1: small uppercase label */
+.hero h1 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--citi-white);
+  text-transform: uppercase;
+  letter-spacing: 0.84px;
+  line-height: 1.2;
+  margin: 16px 0 0;
+  padding: 0 24px 16px;
+}
+
+/* h2: Big bonus heading */
+.hero h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 12px 0 8px;
+}
+
+/* == Second hero section: Content == */
+.hero-container:nth-of-type(2) .hero {
+  background-color: var(--citi-white);
+}
+
+.hero-container:nth-of-type(2) .hero-wrapper {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Content area — placed before hide rule for ascending specificity */
+.hero-container:nth-of-type(2) .hero > div:last-child {
+  padding: 32px 0;
+}
+
+/* Hide the empty first row from the grid table */
+.hero-container:nth-of-type(2) .hero > div:first-child:has(div:empty) {
+  display: none;
+}
+
+/* Body text in hero content */
+.hero-container:nth-of-type(2) .hero p {
+  color: var(--text-body);
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+/* Pricing values ($99, Free) — block display for column layout */
+.hero-container:nth-of-type(2) .hero p strong {
+  font-weight: 700;
+  color: var(--text-color);
+  display: block;
+  font-size: var(--heading-font-size-l);
+  margin-bottom: 2px;
+}
+
+/* Card thumbnail image — wider than badge label */
+.hero-container:nth-of-type(2) .hero > div:last-child > div > p:first-child img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* "Limited time offer" badge — higher specificity overrides general strong above */
+.hero-container:nth-of-type(2) .hero p:nth-child(2) strong {
+  display: inline-block;
+  background-color: var(--citi-green);
+  color: var(--citi-white);
+  padding: 4px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* CTA button - Apply now */
+.hero .button-container {
+  margin: 20px 0 8px;
+}
+
+.hero a.button:any-link {
+  display: inline-block;
+  min-width: 200px;
+  padding: 14px 48px;
+  background-color: var(--citi-blue);
+  border: 2px solid var(--citi-blue);
+  color: var(--citi-white);
+  border-radius: var(--button-border-radius);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero a.button:hover {
+  background-color: var(--button-hover-bg);
+  border-color: var(--button-hover-bg);
+  color: var(--citi-white);
+  text-decoration: none;
+}
+
+/* Disclaimer and info links below CTA */
+.hero-container:nth-of-type(2) .hero .button-container ~ p {
+  font-size: var(--body-font-size-xs);
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 4px 0;
+}
+
+.hero-container:nth-of-type(2) .hero .button-container ~ p a {
+  font-size: var(--body-font-size-xs);
+  color: var(--link-color);
+}
+
+/* == Desktop: overlay layout ==
+ * Image fills full-bleed, content panel overlaps on left side
+ */
 @media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
+  /* (0,1,1) */
+  .hero h2 {
+    font-size: var(--heading-font-size-xxl);
+  }
+
+  /* (0,3,0) group — first-of-type and nth-of-type descendant rules */
+  .hero-container:first-of-type .hero {
+    min-height: 900px;
+  }
+
+  /* Co-brand logo anchored above the earning cards section */
+  .hero-cobrand-logo {
+    display: block;
+    position: absolute;
+    top: -60px;
+    right: 72px;
+    width: 270px;
+    height: auto;
+    z-index: 3;
+    object-fit: contain;
+  }
+
+  .hero-container:nth-of-type(2) .hero {
+    background-color: transparent;
+    overflow: visible;
+  }
+
+  .hero-container:nth-of-type(2) .hero-wrapper {
+    padding: 0 48px;
+    pointer-events: auto;
+  }
+
+  /* (0,3,1) group */
+  .hero-container:first-of-type .hero img {
+    height: 900px;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .hero-container:first-of-type .hero h1 {
+    position: absolute;
+    bottom: auto;
+    top: 175px;
+    left: 350px;
+    padding: 0;
+    margin: 0;
+    z-index: 3;
+    color: var(--text-body);
+  }
+
+  /* Overlay: pull second section up over the image
+   * Uses `main .section.` prefix to beat styles.css `main .section.hero-container { margin: 0 }`
+   * specificity (0,3,1) > (0,2,1)
+   */
+  main .section.hero-container:nth-of-type(2) {
+    margin-top: -780px;
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* (0,4,1) — content panel background and size */
+  .hero-container:nth-of-type(2) .hero > div:last-child {
+    background-color: var(--citi-white);
+    max-width: 640px;
+    padding: 48px 56px;
+    border-radius: var(--card-border-radius);
+  }
+
+  /* Card image extends above the panel */
+  .hero-container:nth-of-type(2) .hero > div:last-child > div > p:first-child {
+    margin-top: -85px;
+  }
+
+  /* (0,4,2) — inner div flex layout for pricing columns */
+  .hero-container:nth-of-type(2) .hero > div:last-child > div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* All children full-width by default */
+  .hero-container:nth-of-type(2) .hero > div:last-child > div > * {
+    flex: 0 0 100%;
+  }
+
+  /* (0,5,3) — Pricing columns side by side */
+  .hero-container:nth-of-type(2) .hero > div:last-child > div > p:nth-child(5) {
+    flex: 0 0 calc(50% - 13px);
+    padding-right: 12px;
+    border-right: 1px solid var(--border-color);
+    font-size: var(--body-font-size-s);
+  }
+
+  .hero-container:nth-of-type(2) .hero > div:last-child > div > p:nth-child(6) {
+    flex: 0 0 calc(50% - 13px);
+    padding-left: 12px;
+    font-size: var(--body-font-size-s);
   }
 }

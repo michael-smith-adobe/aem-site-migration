@@ -1,0 +1,170 @@
+/* Tabs Services - Citigroup Markets
+ * Dark navy background section with blue-bordered card layout
+ * Original: bg #0f1632, card border 1px solid #255be3, border-radius 0 20px 20px 0
+ * Tab list on left, content panel on right with h3 title + paragraphs
+ */
+
+/* The tabs section sits in a dark section */
+.tabs-services-container {
+  background-color: var(--citi-dark-navy);
+  color: var(--citi-white);
+  padding: 60px 0;
+  margin: 0;
+}
+
+.tabs-services-container .tabs-services-wrapper {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.tabs-services-container h2 {
+  color: var(--citi-white);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.222px;
+  margin-bottom: 24px;
+}
+
+/* Mobile: stacked layout with blue border card */
+.tabs-services {
+  border: 1px solid var(--citi-blue);
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+  padding: 24px 24px 24px 0;
+  margin-top: 36px;
+}
+
+.tabs-services .tabs-services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+.tabs-services .tabs-services-list button {
+  flex: 0 0 auto;
+  margin: 0;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 16px;
+  background-color: transparent;
+  color: var(--citi-white);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tabs-services .tabs-services-list button:hover {
+  background-color: rgba(37, 91, 227, 0.5);
+  color: var(--citi-white);
+}
+
+.tabs-services .tabs-services-list button p {
+  margin: 0;
+}
+
+.tabs-services .tabs-services-list button[aria-selected='true'] {
+  background-color: var(--citi-blue);
+  cursor: default;
+}
+
+/* Chevron icon on active tab */
+.tabs-services .tabs-services-list button .tabs-services-chevron {
+  display: none;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.tabs-services .tabs-services-list button[aria-selected='true'] .tabs-services-chevron {
+  display: block;
+}
+
+/* Tab panels */
+.tabs-services .tabs-services-panel {
+  margin-top: 0;
+  padding: 0 0 0 24px;
+  border: none;
+  color: var(--citi-white);
+  overflow: auto;
+}
+
+.tabs-services .tabs-services-panel h3 {
+  color: var(--citi-white);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.tabs-services .tabs-services-panel p {
+  color: var(--citi-white);
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.tabs-services .tabs-services-panel[aria-hidden='true'] {
+  display: none;
+}
+
+@media (width >= 900px) {
+  .tabs-services-container {
+    padding: 90px 0;
+  }
+
+  .tabs-services-container .tabs-services-wrapper {
+    padding: 0 32px;
+  }
+
+  /* Side-by-side layout: tabs on left, content on right inside blue border card */
+  .tabs-services {
+    display: flex;
+    flex-direction: row;
+    padding: 40px 0 40px 96px;
+    margin: 36px 96px 0 0;
+  }
+
+  .tabs-services .tabs-services-list {
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 260px;
+    margin-bottom: 0;
+    gap: 0;
+    padding-left: 0;
+  }
+
+  .tabs-services .tabs-services-list button {
+    white-space: normal;
+    border-radius: 0;
+    padding: 14px 16px;
+    width: 100%;
+  }
+
+  .tabs-services .tabs-services-list button[aria-selected='true'] {
+    border-radius: 10px;
+  }
+
+  .tabs-services .tabs-services-panel {
+    flex: 1;
+    min-width: 0;
+    padding: 0 40px 0 60px;
+  }
+}

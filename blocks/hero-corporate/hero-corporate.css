@@ -1,0 +1,69 @@
+/* Hero Corporate - Citigroup Markets
+ * Full-width hero with background image and white title overlay
+ * Original: ~445px height, h1 23px bold uppercase white, left-aligned with padding
+ */
+
+.hero-corporate-container .hero-corporate-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-corporate {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px 24px;
+}
+
+.hero-corporate h1,
+.hero-corporate h2,
+.hero-corporate h3,
+.hero-corporate h4,
+.hero-corporate h5,
+.hero-corporate h6,
+.hero-corporate p {
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  color: var(--citi-white);
+}
+
+.hero-corporate h1 {
+  font-size: 23px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.24px;
+  margin: 0;
+  padding-left: 32px;
+}
+
+.hero-corporate.no-image * {
+  color: var(--text-color);
+}
+
+.hero-corporate picture {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.hero-corporate img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media (width >= 900px) {
+  .hero-corporate {
+    min-height: 445px;
+    padding: 60px 32px;
+  }
+
+  .hero-corporate h1 {
+    padding-left: 48px;
+  }
+}

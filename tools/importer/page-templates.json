@@ -1,0 +1,43 @@
+{
+  "templates": [
+    {
+      "name": "citigroup-markets",
+      "urls": [
+        "https://www.citigroup.com/global/businesses/markets"
+      ],
+      "description": "Corporate business unit landing page with hero, tabbed services, insight cards, news cards, awards grid, contact CTA, and newsletter signup",
+      "blocks": [
+        {
+          "name": "hero-corporate",
+          "instances": [
+            "#GpaThirdLevelHero20"
+          ]
+        },
+        {
+          "name": "tabs-services",
+          "instances": [
+            "#GpaBusinessSolutions60"
+          ]
+        },
+        {
+          "name": "cards-insight",
+          "instances": [
+            "#GpaCardCarousel80"
+          ]
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            "#GpaArticlesCarousel100"
+          ]
+        },
+        {
+          "name": "columns-awards",
+          "instances": [
+            "#GpaAwards130"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "variantName": "columns-awards",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-02-12T20:25:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.citigroup.com/global/businesses/markets",
+    "originPage": "Corporate business unit landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "awards-showcase",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "3-column grid with title + bullet-list items",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "awards and recognition sections",
+      "multi-column text listings",
+      "categorized content grids",
+      "credential or certification displays"
+    ],
+    "notSuitableFor": [
+      "image-heavy column layouts",
+      "single-column content",
+      "interactive column content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/global/businesses/markets"],
+    "reuseCount": 1,
+    "lastUsed": "2026-02-12T20:25:00.000Z"
+  }
+}

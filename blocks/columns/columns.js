@@ -15,4 +15,15 @@ export default function decorate(block) {
       }
     });
   });
+
+  // Feature section: move preceding h2 into text column for unified centering
+  const section = block.closest('.section.feature');
+  if (section) {
+    const dcw = section.querySelector('.default-content-wrapper');
+    const h2 = dcw?.querySelector('h2');
+    const textCol = block.querySelector(':scope > div > div:not(.columns-img-col)');
+    if (h2 && textCol) {
+      textCol.prepend(h2);
+    }
+  }
 }

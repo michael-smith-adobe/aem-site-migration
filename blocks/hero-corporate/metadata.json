@@ -1,0 +1,40 @@
+{
+  "variantName": "hero-corporate",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-02-12T20:25:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.citigroup.com/global/businesses/markets",
+    "originPage": "Corporate business unit landing page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "purpose": "corporate-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background-image + heading",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "corporate business unit pages",
+      "division landing pages",
+      "service overview pages",
+      "institutional pages with hero banners"
+    ],
+    "notSuitableFor": [
+      "product detail pages",
+      "blog posts or articles",
+      "pages requiring multiple CTAs in hero"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/global/businesses/markets"],
+    "reuseCount": 1,
+    "lastUsed": "2026-02-12T20:25:00.000Z"
+  }
+}

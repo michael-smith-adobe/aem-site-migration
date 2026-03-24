@@ -1,72 +1,91 @@
 /*
- * Copyright 2020 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
+ * Citi Credit Cards - Global Design System
+ * Source: https://www.citi.com/credit-cards/citi-aadvantage-platinum-select-world-elite-mastercard
+ * Fonts: Citi Sans / Citi Sans Display / Interstate (self-hosted)
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* Brand colors - Citi Credit Cards */
+  --citi-blue: #04208f;
+  --citi-light-blue: #056dae;
+  --citi-dark: #26292b;
+  --citi-dark-navy: #191b23;
+  --citi-black: #000;
+  --citi-white: #fff;
+  --citi-green: #13846d;
+  --citi-red: #e61e27;
+
+  /* Base colors */
+  --background-color: #fff;
+  --light-color: #f0f5f7;
+  --dark-color: #191b23;
+  --text-color: #26292b;
+  --text-secondary: #5e676b;
+  --text-body: #3a3e40;
+  --link-color: #056dae;
+  --link-hover-color: #04208f;
+
+  /* UI colors */
+  --border-color: #e0e0e0;
+  --border-light: #ededed;
+  --shadow-light: rgb(0 0 0 / 8%);
+
+  /* Interactive states */
+  --button-primary-bg: #04208f;
+  --button-primary-border: #04208f;
+  --button-primary-text: #fff;
+  --button-hover-bg: #031a73;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: 'Citi Sans', 'Interstate', citi-fallback, sans-serif;
+  --heading-font-family: 'Citi Sans Display', 'Interstate', citi-fallback, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  --heading-font-size-xxl: 32px;
+  --heading-font-size-xl: 28px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 16px;
+  --heading-font-size-xs: 14px;
+
+  /* spacing scale */
+  --spacing-xs: 8px;
+  --spacing-s: 16px;
+  --spacing-m: 24px;
+  --spacing-l: 32px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 64px;
+
+  /* layout */
+  --content-max-width: 1200px;
+  --card-border-radius: 24px;
+  --button-border-radius: 4px;
 
   /* nav height */
   --nav-height: 64px;
 }
 
-/* fallback fonts */
+/* fallback font */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
+  font-family: citi-fallback;
+  size-adjust: 100%;
+  ascent-override: 90%;
   src: local('Arial');
 }
 
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
+    --heading-font-size-xxl: 36px;
+    --heading-font-size-xl: 32px;
     --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    --heading-font-size-m: 20px;
+    --heading-font-size-s: 16px;
+    --heading-font-size-xs: 14px;
   }
 }
 
@@ -77,7 +96,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 body.appear {
@@ -98,6 +117,7 @@ footer .footer[data-block-status="loaded"] {
   visibility: visible;
 }
 
+/* Headings - Citi Credit Cards typography */
 h1,
 h2,
 h3,
@@ -107,15 +127,31 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 400;
+  line-height: 1.17;
   scroll-margin: 40px;
+  color: var(--text-color);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+h4 { font-size: var(--heading-font-size-s); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
@@ -153,11 +189,12 @@ button {
   font: inherit;
 }
 
-/* links */
+/* Links */
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
   overflow-wrap: break-word;
+  transition: color 0.2s ease;
 }
 
 a:hover {
@@ -165,49 +202,77 @@ a:hover {
   text-decoration: underline;
 }
 
-/* buttons */
+/* Buttons - Citi Credit Cards style */
 a.button:any-link,
 button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border: 2px solid var(--button-primary-border);
+  border-radius: var(--button-border-radius);
+  padding: 12px 32px;
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
-  line-height: 1.25;
+  font-weight: 700;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: var(--button-hover-bg);
+  border-color: var(--button-hover-bg);
+  color: var(--citi-white);
+  text-decoration: none;
   cursor: pointer;
 }
 
 button:disabled,
 button:disabled:hover {
   background-color: var(--light-color);
-  cursor: unset;
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+  cursor: not-allowed;
 }
 
+/* Secondary button - outlined */
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  background-color: transparent;
+  border: 2px solid var(--citi-blue);
+  color: var(--citi-blue);
+}
+
+a.button.secondary:hover,
+button.secondary:hover {
+  background-color: var(--citi-blue);
+  color: var(--citi-white);
+}
+
+/* Primary button (explicit) */
+a.button.primary,
+button.primary {
+  background-color: var(--citi-blue);
+  border-color: var(--citi-blue);
+  color: var(--citi-white);
+}
+
+a.button.primary:hover,
+button.primary:hover {
+  background-color: var(--button-hover-bg);
+  border-color: var(--button-hover-bg);
 }
 
 main img {
@@ -227,13 +292,13 @@ main img {
   width: 100%;
 }
 
-/* sections */
+/* Sections - base */
 main > .section {
   margin: 40px 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: var(--content-max-width);
   margin: auto;
   padding: 0 24px;
 }
@@ -248,10 +313,243 @@ main > .section:first-of-type {
   }
 }
 
-/* section metadata */
+/* Section metadata - light (panel style) */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
+  margin: var(--spacing-m) auto;
+  padding: 40px var(--spacing-m);
+  border-radius: 24px;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+/* Section metadata - dark */
+main .section.dark {
+  background-color: var(--citi-dark-navy);
+  color: var(--citi-white);
   margin: 0;
+  padding: var(--spacing-xxl) 0;
+  position: relative;
+  z-index: 3;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: var(--citi-white);
+}
+
+main .section.dark p {
+  color: var(--citi-white);
+}
+
+main .section.dark a:any-link {
+  color: var(--citi-white);
+}
+
+main .section.dark a.button:any-link {
+  background-color: transparent;
+  border: 2px solid var(--citi-white);
+  color: var(--citi-white);
+  font-weight: 500;
+}
+
+main .section.dark a.button:hover {
+  background-color: var(--citi-white);
+  border-color: var(--citi-white);
+  color: var(--citi-dark-navy);
+}
+
+/* Section metadata - dark-overlap (transparent bg, overlaps hero on desktop) */
+main .section.dark-overlap {
+  background-color: transparent;
+  color: var(--citi-white);
+  margin: 0;
+  padding: var(--spacing-xs) 0;
+  position: relative;
+  z-index: 3;
+}
+
+main .section.dark-overlap p {
+  color: var(--citi-white);
+}
+
+@media (width >= 900px) {
+  main .section.dark-overlap {
+    margin-top: 65px;
+  }
+}
+
+/* Section metadata - feature (full-bleed image + floating text panel) */
+main .section.feature {
+  background: transparent;
+  padding: 0;
+}
+
+main .section.feature > .columns-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+main .section.feature > .default-content-wrapper {
+  padding: 0 var(--spacing-m);
+}
+
+main .section.feature h2 {
+  font-size: 42px;
+  font-weight: 400;
+  color: var(--text-color);
+  margin: 0 0 var(--spacing-s);
+  line-height: 1.15;
+}
+
+@media (width >= 900px) {
+  main .section.feature {
+    position: relative;
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    max-width: var(--content-max-width);
+    margin: var(--spacing-l) auto;
+  }
+
+  main .section.feature > .default-content-wrapper:empty {
+    display: none;
+  }
+
+  main .section.feature > .columns-wrapper {
+    max-width: unset;
+    padding: 0;
+  }
+}
+
+/* Hero section - auto-detected by AEM (picture + h1) */
+main .section.hero-container {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+main .section.hero-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* Section metadata - centered (Being a cardholder section) */
+main .section.centered {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+main .section.centered h2 {
+  text-transform: uppercase;
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Section metadata - explore (card fan image + card list, 2-col layout) */
+main .section.explore {
+  padding: var(--spacing-xl) 0;
+}
+
+/* h2 moves to cards-wrapper via JS; style it wherever it lands */
+main .section.explore h2 {
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0 0 16px;
+  line-height: 1.12;
+}
+
+main .section.explore > .default-content-wrapper p:has(picture) {
+  margin: 0;
+}
+
+main .section.explore > .default-content-wrapper picture img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (width >= 900px) {
+  main .section.explore {
+    display: flex;
+    align-items: stretch;
+  }
+
+  main .section.explore > div {
+    max-width: unset;
+    padding: 0 32px;
+    box-sizing: border-box;
+  }
+
+  main .section.explore > .default-content-wrapper {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    order: 1;
+    margin: 0;
+  }
+
+  main .section.explore > .default-content-wrapper p:has(picture) {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+  }
+
+  main .section.explore > .default-content-wrapper p:has(picture) picture {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  main .section.explore > .default-content-wrapper picture img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  main .section.explore > .cards-wrapper {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 2;
+    margin: 0;
+    min-height: 620px;
+  }
+}
+
+/* Section metadata - faq (white background, centered heading) */
+main .section.faq {
+  background-color: var(--citi-white);
   padding: 40px 0;
+}
+
+main .section.faq h2 {
+  text-align: center;
+  font-size: 46px;
+  font-weight: 400;
+  font-family: var(--heading-font-family);
+  color: var(--text-color);
+  margin: 0 0 32px;
+  line-height: 1.3;
+}
+
+/* Hide metadata block section */
+main .section.metadata-container {
+  display: none;
+}
+
+/* Strong text within paragraphs (used for labels and emphasis) */
+main p strong {
+  font-weight: 600;
 }

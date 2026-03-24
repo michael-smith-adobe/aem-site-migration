@@ -1,10 +1,19 @@
+/*
+ * Columns Block - Citi Credit Cards
+ * Used for: earning rates (4-col), benefits (2-col), pricing (3-col),
+ * features (3-col icon grid), "Two ways to earn" (2-col)
+ */
+
+/* Base: stack on mobile */
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-s);
 }
 
 .columns img {
   width: 100%;
+  height: auto;
 }
 
 .columns > div > div {
@@ -19,15 +28,371 @@
   display: block;
 }
 
+/* Column text styling */
+.columns p {
+  margin: 4px 0;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+.columns strong {
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.columns h3 {
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+  margin: 8px 0 4px;
+  color: var(--text-color);
+}
+
+/* Icon images in feature columns (small icons above text) */
+.columns > div > div > p:first-child picture img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* == Earning rate columns (4-col with colored backgrounds) ==
+ * The first Columns block uses colored icon images with 2X/1X text.
+ * In the original, these are colored cards. We style via bold text for the multiplier.
+ */
+.columns > div > div > p:first-child strong {
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* == Pricing columns (Annual Fee, APR, Balance Transfer) ==
+ * 3 columns with bold values and descriptive text
+ * Placed before dark/light section rules for ascending specificity
+ */
+.columns.columns-3-cols > div > div {
+  padding: 2px 0;
+}
+
+.columns.columns-3-cols p {
+  font-size: var(--body-font-size-xs);
+  margin: 2px 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.columns.columns-3-cols p strong {
+  font-size: var(--heading-font-size-s);
+}
+
+/* Pricing column headers (first row) — light labels, not bold */
+.columns.columns-3-cols > div:first-child > div > p strong {
+  font-weight: 400;
+  font-size: var(--body-font-size-xs);
+  color: var(--text-body);
+  display: inline;
+}
+
+/* == Centered text columns (Two ways to earn, Being a cardholder) ==
+ * Placed before dark/light section rules for ascending specificity
+ */
+.columns.columns-2-cols h3 {
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+}
+
+.columns.columns-2-cols p {
+  font-size: var(--body-font-size-s);
+  line-height: 1.3;
+  color: var(--text-body);
+  margin: 0;
+}
+
+.columns.columns-2-cols .columns-img-col img {
+  border-radius: var(--card-border-radius);
+}
+
+/* Bold subheadings in 2-col text (AAdvantage miles, Loyalty Points) */
+/* stylelint-disable-next-line no-descending-specificity */
+.columns.columns-2-cols > div > div > p strong {
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+  display: block;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  color: var(--text-body);
+  margin-bottom: 4px;
+  padding-top: 12px;
+}
+
+/* First strong acts as section heading (Two ways to earn) */
+.columns.columns-2-cols > div > div > p strong:first-child {
+  padding-top: 0;
+  font-family: var(--heading-font-family);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: normal;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+/* Hide <br> after block-level strongs — spacing controlled by margins */
+.columns.columns-2-cols > div > div > p strong + br {
+  display: none;
+}
+
+/* == Centered section columns (Being a cardholder) ==
+ * Centered text with icon + heading + description
+ */
+.section.centered .columns.columns-2-cols > div > div {
+  text-align: center;
+}
+
+.section.centered .columns.columns-2-cols .columns-img-col img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 0;
+}
+
+/* Override first-strong heading size for centered section (20px, not 48px) */
+/* stylelint-disable-next-line no-descending-specificity */
+.section.centered .columns.columns-2-cols > div > div > p strong:first-child {
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+  font-family: var(--heading-font-family);
+  color: var(--text-body);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.centered .columns.columns-2-cols p {
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* == Dark section columns (Pack more benefits) ==
+ * These columns are inside a .section.dark container
+ */
+/* stylelint-disable-next-line no-descending-specificity */
+.section.dark .columns > div {
+  align-items: stretch;
+}
+
+.section.dark .columns h2 {
+  color: var(--citi-white);
+}
+
+.section.dark .columns h3 {
+  color: var(--citi-white);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.dark .columns p {
+  color: rgb(255 255 255 / 85%);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.dark .columns img {
+  border-radius: var(--card-border-radius);
+}
+
+/* == Feature icon columns (No foreign transaction fees, etc.) ==
+ * Section with light background has icon + heading + description columns
+ * Placed before 4-col earning cards for ascending specificity
+ */
+/* stylelint-disable-next-line no-descending-specificity */
+.section.light .columns > div > div,
+/* stylelint-disable-next-line no-descending-specificity */
+.section.highlight .columns > div > div {
+  text-align: left;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.light .columns img,
+/* stylelint-disable-next-line no-descending-specificity */
+.section.highlight .columns img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+/* == Earning rate cards (4-col in dark / dark-overlap section) ==
+ * Colored card backgrounds matching original Citi design:
+ * Card 1 (AA purchases): Red | Card 2 (restaurants): Slate
+ * Card 3 (gas stations): Dark | Card 4 (all other): Red
+ */
+.section.dark .columns.columns-4-cols > div:last-child > div,
+.section.dark-overlap .columns.columns-4-cols > div:last-child > div {
+  border-radius: var(--card-border-radius);
+  padding: var(--spacing-s);
+}
+
+.section.dark .columns.columns-4-cols > div:last-child > div p,
+.section.dark-overlap .columns.columns-4-cols > div:last-child > div p {
+  color: var(--citi-white);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.dark .columns.columns-4-cols > div:last-child > div strong,
+/* stylelint-disable-next-line no-descending-specificity */
+.section.dark-overlap .columns.columns-4-cols > div:last-child > div strong {
+  color: var(--citi-white);
+  font-size: var(--heading-font-size-l);
+}
+
+.section.dark .columns.columns-4-cols > div:last-child > div:nth-child(1),
+.section.dark-overlap .columns.columns-4-cols > div:last-child > div:nth-child(1) {
+  background-color: #e61e27;
+}
+
+.section.dark .columns.columns-4-cols > div:last-child > div:nth-child(2),
+.section.dark-overlap .columns.columns-4-cols > div:last-child > div:nth-child(2) {
+  background-color: #50657c;
+}
+
+.section.dark .columns.columns-4-cols > div:last-child > div:nth-child(3),
+.section.dark-overlap .columns.columns-4-cols > div:last-child > div:nth-child(3) {
+  background-color: var(--citi-dark);
+}
+
+.section.dark .columns.columns-4-cols > div:last-child > div:nth-child(4),
+.section.dark-overlap .columns.columns-4-cols > div:last-child > div:nth-child(4) {
+  background-color: #e61e27;
+}
+
+/* == Feature section (full-bleed image + floating text panel) ==
+ * Image spans full card width as background
+ * Text panel floats on top of image on the right
+ * h2 heading is in .default-content-wrapper, positioned absolutely in styles.css
+ */
+/* stylelint-disable-next-line no-descending-specificity */
+.section.feature .columns.columns-2-cols > div > div:not(.columns-img-col) {
+  background-color: var(--background-color);
+  padding: var(--spacing-m);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.section.feature .columns.columns-2-cols > div > div:not(.columns-img-col) strong {
+  display: block;
+  font-size: var(--heading-font-size-s);
+  font-weight: 600;
+  color: var(--text-color);
+  margin-top: var(--spacing-s);
+}
+
+.section.feature .columns.columns-2-cols > div > div:not(.columns-img-col) strong:first-child {
+  margin-top: 0;
+}
+
+.section.feature .columns.columns-2-cols > div > div:not(.columns-img-col) p {
+  color: var(--text-body);
+  font-size: var(--body-font-size-s);
+  line-height: 1.6;
+}
+
+/* Desktop: equal columns side by side */
 @media (width >= 900px) {
   .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+    align-items: stretch;
+    flex-direction: row;
+    gap: var(--spacing-m);
   }
 
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+
+  /* Column count variants — > div rules grouped before > div > div */
+  .columns.columns-4-cols > div {
+    gap: var(--spacing-s);
+  }
+
+  .columns.columns-3-cols > div {
+    gap: var(--spacing-m);
+  }
+
+  .columns.columns-2-cols > div {
+    gap: var(--spacing-l);
+    align-items: center;
+  }
+
+  /* Column count — > div > div rules (0,2,2) */
+  .columns.columns-4-cols > div > div {
+    padding: var(--spacing-m);
+    border-radius: var(--card-border-radius);
+    min-height: 140px;
+  }
+
+  .columns.columns-3-cols > div > div {
+    padding: 2px var(--spacing-s);
+    border-right: 1px solid var(--border-color);
+  }
+
+  /* Dark section desktop (0,3,1) */
+  .section.dark .columns > div {
+    gap: var(--spacing-xl);
+  }
+
+  /* 3-col last-child border reset (0,3,2) */
+  .columns.columns-3-cols > div > div:last-child {
+    border-right: none;
+  }
+
+  /* Earning rate 4-col cards — tighter gap (0,4,1) */
+  .section.dark .columns.columns-4-cols > div,
+  .section.dark-overlap .columns.columns-4-cols > div {
+    gap: var(--spacing-s);
+  }
+
+  .section.dark .columns > div > .columns-img-col,
+  .section.dark-overlap .columns > div > .columns-img-col {
+    flex: 1;
+  }
+
+  /* Dark section content columns (0,4,2) */
+  .section.dark .columns > div > div:not(.columns-img-col),
+  .section.dark-overlap .columns > div > div:not(.columns-img-col) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Feature section: full-bleed image + floating text panel */
+  /* stylelint-disable-next-line no-descending-specificity */
+  .section.feature .columns.columns-2-cols > div {
+    position: relative;
+    gap: 0;
+  }
+
+  .section.feature .columns.columns-2-cols .columns-img-col {
+    flex: 0 0 100%;
+  }
+
+  .section.feature .columns.columns-2-cols .columns-img-col img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Text panel: floating overlay on the right */
+  /* stylelint-disable-next-line no-descending-specificity */
+  .section.feature .columns.columns-2-cols > div > div:not(.columns-img-col) {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    box-sizing: border-box;
+    padding: 48px;
+    border-radius: var(--card-border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 }
