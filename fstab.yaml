@@ -1,0 +1,4 @@
+mountpoints:
+  /:
+    url: https://content.da.live/michael-smith-adobe/aem-site-migration/qvc
+    type: markup
