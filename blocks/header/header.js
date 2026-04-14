@@ -18,6 +18,33 @@ function toggleMenu(nav, forceExpanded = null) {
  * Row 1: Logo | Primary actions (Items On Air) | Search | Sign In | Cart
  * Row 2: Category links bar
  */
+function buildFallbackNav() {
+  const wrapper = document.createElement('div');
+  wrapper.innerHTML = `<div><p><a href="https://www.qvc.com"><img src="https://qvc.scene7.com/is/image/QVC/qvc-logo-rebrand?fmt=png-alpha" alt="QVC home"></a></p></div>
+<div><ul>
+<li><a href="https://www.qvc.com/content/featured/my-recommendations.html">Your Picks</a></li>
+<li><a href="https://www.qvc.com/collections/featured-new-this-month.html">New</a></li>
+<li><a href="https://www.qvc.com/collections/featured-trending-today.html">Trending Now</a></li>
+<li><a href="https://www.qvc.com/collections/holiday-mothers-day-gifts.html">Mother's Day Gift Guide</a></li>
+<li><a href="https://www.qvc.com/collections/deals-clearance.html">Clearance</a></li>
+<li><a href="https://www.qvc.com/c/garden-and-outdoor-living/-/gq7tw6/c.html">Garden</a></li>
+<li><a href="https://www.qvc.com/c/fashion/-/lglt/c.html">Fashion</a></li>
+<li><a href="https://www.qvc.com/c/beauty/-/rhty/c.html">Beauty</a></li>
+<li><a href="https://www.qvc.com/c/jewelry/-/mflu/c.html">Jewelry</a></li>
+<li><a href="https://www.qvc.com/c/shoes/-/1doux/c.html">Shoes</a></li>
+<li><a href="https://www.qvc.com/c/handbags-and-luggage/-/uoq0/c.html">Bags</a></li>
+<li><a href="https://www.qvc.com/c/for-the-home/-/lglu/c.html">Home</a></li>
+<li><a href="https://www.qvc.com/c/electronics/-/lglw/c.html">Electronics</a></li>
+<li><a href="https://www.qvc.com/c/kitchen-and-food/-/lglv/c.html">Kitchen</a></li>
+<li><a href="https://www.qvc.com/c/kitchen-and-food/food/-/1ciq2/c.html">Food &amp; Wine</a></li>
+</ul></div>
+<div><ul>
+<li><a href="https://www.qvc.com/content/iroa.html">Items On Air</a></li>
+<li><a href="https://www.qvc.com/myaccount/my-account.html">Sign In</a></li>
+</ul></div>`;
+  return [...wrapper.children];
+}
+
 export default async function decorate(block) {
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
@@ -28,9 +55,20 @@ export default async function decorate(block) {
   nav.id = 'nav';
 
   // Collect sections from fragment (skip <hr> elements)
-  while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
-  nav.querySelectorAll(':scope > hr').forEach((hr) => hr.remove());
-  const sections = [...nav.children];
+  let sections = [];
+  if (fragment) {
+    while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
+    nav.querySelectorAll(':scope > hr').forEach((hr) => hr.remove());
+    sections = [...nav.children];
+  }
+
+  // Validate sections have expected content; fall back if not
+  const hasLogo = sections[0] && sections[0].querySelector('img');
+  const hasLinks = sections[1] && sections[1].querySelector('ul');
+  const hasTools = sections[2] && sections[2].querySelector('a');
+  if (!hasLogo || !hasLinks || !hasTools) {
+    sections = buildFallbackNav();
+  }
 
   // Clear nav and rebuild with two-row structure
   nav.textContent = '';
