@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-deal",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-04-13T21:56:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.qvc.com",
+    "originPage": "QVC homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "deal-teaser",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + title + link",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "deal/promo category grids",
+      "product teaser grids",
+      "category showcase sections",
+      "spotlight deal cards"
+    ],
+    "notSuitableFor": [
+      "text-only card layouts",
+      "detailed product listings with pricing"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-04-13T21:56:00.000Z"
+  }
+}
