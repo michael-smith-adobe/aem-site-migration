@@ -1,0 +1,250 @@
+/* Carousel Product - QVC product slider */
+
+.carousel-product .carousel-product-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 var(--spacing-l);
+  margin-bottom: var(--spacing-m);
+}
+
+.carousel-product .carousel-product-header-text h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  color: var(--heading-color);
+  margin: 0;
+  display: inline;
+  background-image: linear-gradient(to right, var(--brand-coral), var(--brand-coral));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 6px;
+  padding-bottom: 2px;
+}
+
+.carousel-product .carousel-product-header-text p {
+  margin: var(--spacing-s) 0 0;
+  font-size: var(--body-font-size-m);
+  color: var(--text-color);
+}
+
+.carousel-product .carousel-product-header-text p em {
+  font-style: italic;
+}
+
+.carousel-product .carousel-product-header-action a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--brand-navy);
+  background-color: transparent;
+  color: var(--brand-navy);
+  padding: 10px 24px;
+  font-size: var(--body-font-size-s);
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.carousel-product .carousel-product-header-action a:hover {
+  background-color: var(--brand-navy);
+  color: #fff;
+}
+
+.carousel-product .carousel-product-sale-badge-wrap {
+  margin: 0 0 var(--spacing-xs);
+}
+
+.carousel-product .carousel-product-sale-badge {
+  display: inline-block;
+  border: 1px solid var(--brand-red);
+  color: var(--brand-red);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-content .carousel-product-price-current {
+  color: var(--brand-red);
+  font-size: 20px;
+  font-weight: 700;
+  margin: var(--spacing-xs) 0;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-content .carousel-product-price-original {
+  color: var(--text-color);
+  font-size: var(--body-font-size-s);
+  text-decoration: line-through;
+  margin: 0;
+}
+
+.carousel-product .carousel-product-slides-container {
+  position: relative;
+}
+
+.carousel-product .carousel-product-slides,
+.carousel-product .carousel-product-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-product .carousel-product-slides {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: auto hidden;
+  gap: var(--spacing-m);
+  padding: 0 var(--spacing-l);
+}
+
+.carousel-product .carousel-product-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-product .carousel-product-slide {
+  flex: 0 0 45%;
+  scroll-snap-align: start;
+  text-align: left;
+  min-width: 160px;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-image {
+  line-height: 0;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-image picture {
+  position: static;
+  display: block;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-image picture > img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-content {
+  padding: var(--spacing-s) var(--spacing-xs);
+  background-color: transparent;
+  color: var(--text-color);
+  margin: 0;
+  position: static;
+  width: auto;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-content p {
+  margin: var(--spacing-xs) 0;
+  font-size: var(--body-font-size-s);
+  line-height: 1.4;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-content p strong {
+  font-weight: 700;
+  color: var(--heading-color);
+  font-size: var(--body-font-size-m);
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-content a {
+  color: var(--link-color);
+  font-size: var(--body-font-size-s);
+  text-decoration: none;
+}
+
+.carousel-product .carousel-product-slide .carousel-product-slide-content a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+.carousel-product .carousel-product-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 12px;
+  padding: var(--spacing-m);
+  line-height: 0;
+}
+
+.carousel-product .carousel-product-slide-indicator button {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--dark-color);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.carousel-product .carousel-product-slide-indicator button:disabled,
+.carousel-product .carousel-product-slide-indicator button:hover {
+  background-color: var(--brand-navy);
+}
+
+.carousel-product .carousel-product-navigation-buttons {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-product .carousel-product-navigation-buttons button {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border-radius: 50%;
+  border: 1px solid var(--dark-color);
+  padding: 0;
+  background-color: rgb(255 255 255 / 90%);
+  transition: background-color 0.2s;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.carousel-product .carousel-product-navigation-buttons button:hover {
+  background-color: var(--light-color);
+}
+
+.carousel-product .carousel-product-navigation-buttons button::after {
+  display: block;
+  content: '';
+  border: 2px solid var(--brand-navy);
+  border-bottom: 0;
+  border-left: 0;
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-product .carousel-product-navigation-buttons button.slide-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 2px);
+}
+
+@media (width >= 600px) {
+  .carousel-product .carousel-product-slide {
+    flex: 0 0 30%;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-product .carousel-product-slide {
+    flex: 0 0 20%;
+    min-width: 180px;
+  }
+}

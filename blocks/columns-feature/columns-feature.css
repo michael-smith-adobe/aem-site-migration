@@ -1,0 +1,108 @@
+/* Columns Feature - QVC two-column promo layout (TSV, QVC+, Easy Pay) */
+
+/* stylelint-disable-next-line no-descending-specificity */
+.columns-feature-container .columns-feature-wrapper {
+  padding: 0;
+}
+
+.columns-feature > div {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+}
+
+.columns-feature img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.columns-feature > div > div {
+  order: 1;
+  padding: var(--spacing-m);
+}
+
+.columns-feature > div > .columns-feature-img-col {
+  order: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.columns-feature > div > .columns-feature-img-col img {
+  display: block;
+}
+
+.columns-feature h3,
+.columns-feature h4 {
+  color: var(--heading-color);
+  font-size: var(--heading-font-size-m);
+  margin: 0 0 var(--spacing-s);
+  line-height: 1.25;
+}
+
+.columns-feature p {
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+  margin: 0 0 var(--spacing-m);
+}
+
+.columns-feature p strong {
+  color: var(--brand-red);
+}
+
+.columns-feature > div > div:not(.columns-feature-img-col) a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--brand-navy);
+  background-color: var(--brand-navy);
+  color: #fff;
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: var(--spacing-s);
+}
+
+.columns-feature > div > div:not(.columns-feature-img-col) a:hover {
+  background-color: #1a2436;
+  border-color: #1a2436;
+  color: #fff;
+}
+
+@media (width >= 900px) {
+  .columns-feature > div {
+    align-items: stretch;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .columns-feature > div > div {
+    flex: 1;
+    order: unset;
+    padding: var(--spacing-xl) var(--spacing-l);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .columns-feature > div > .columns-feature-img-col {
+    flex: 3;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .columns-feature > div > .columns-feature-img-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .columns-feature h3,
+  .columns-feature h4 {
+    font-size: var(--heading-font-size-l);
+  }
+}

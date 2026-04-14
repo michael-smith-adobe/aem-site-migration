@@ -1,0 +1,98 @@
+/* Hero Promo - QVC full-width promotional banner */
+
+.hero-promo-container .hero-promo-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-promo {
+  position: relative;
+  padding: 0;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+.hero-promo > div:first-child {
+  line-height: 0;
+}
+
+.hero-promo picture {
+  display: block;
+  line-height: 0;
+}
+
+.hero-promo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.hero-promo h1,
+.hero-promo h2,
+.hero-promo h3 {
+  color: var(--heading-color);
+  font-size: var(--heading-font-size-xl);
+  margin: var(--spacing-m) 0 var(--spacing-s);
+}
+
+.hero-promo p {
+  color: var(--text-color);
+  margin: 0 0 var(--spacing-m);
+}
+
+.hero-promo a:any-link {
+  color: var(--link-color);
+}
+
+/* Content overlay below the image */
+.hero-promo > div:last-child {
+  padding: var(--spacing-m) var(--spacing-l);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* No-image variant: compact centered button */
+.hero-promo.no-image {
+  min-height: 0;
+}
+
+.hero-promo.no-image > div:first-child {
+  display: none;
+}
+
+.hero-promo.no-image > div:last-child {
+  text-align: center;
+  padding: var(--spacing-l) var(--spacing-l) var(--spacing-xl);
+}
+
+.hero-promo.no-image a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--brand-navy);
+  background-color: var(--brand-navy);
+  color: #fff;
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hero-promo.no-image a:hover {
+  background-color: #1a2436;
+  border-color: #1a2436;
+  color: #fff;
+}
+
+@media (width >= 900px) {
+  .hero-promo {
+    min-height: 300px;
+  }
+
+  .hero-promo > div:last-child {
+    padding: var(--spacing-l) 32px;
+  }
+}

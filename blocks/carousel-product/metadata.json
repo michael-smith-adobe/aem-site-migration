@@ -1,0 +1,38 @@
+{
+  "variantName": "carousel-product",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-04-13T21:56:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.qvc.com",
+    "originPage": "QVC homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "product-carousel",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + product name + price + rating + link",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product showcase carousels",
+      "deal product sliders",
+      "featured item galleries"
+    ],
+    "notSuitableFor": [
+      "image-only galleries",
+      "text-heavy content sliders"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-04-13T21:56:00.000Z"
+  }
+}

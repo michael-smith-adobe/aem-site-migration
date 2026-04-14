@@ -1,0 +1,81 @@
+/* Cards Deal - QVC teaser/deal card grid */
+
+.cards-deal > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-m);
+}
+
+.cards-deal > ul > li {
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+
+.cards-deal > ul > li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cards-deal .cards-deal-card-image {
+  line-height: 0;
+}
+
+.cards-deal > ul > li img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.cards-deal .cards-deal-card-body {
+  padding: var(--spacing-s) var(--spacing-m);
+}
+
+.cards-deal .cards-deal-card-body p {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.cards-deal .cards-deal-card-body p strong {
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.cards-deal .cards-deal-card-body a {
+  display: inline-block;
+  margin-top: var(--spacing-xs);
+  font-size: var(--body-font-size-s);
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.cards-deal .cards-deal-card-body a:hover {
+  color: var(--link-hover-color);
+}
+
+@media (width >= 600px) {
+  .cards-deal > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-deal > ul {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-l);
+  }
+
+  .cards-deal .cards-deal-card-body {
+    padding: var(--spacing-s) 0;
+  }
+
+  .cards-deal .cards-deal-card-body p {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+}

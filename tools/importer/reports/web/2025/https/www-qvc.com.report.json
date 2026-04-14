@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "url": "https://web.archive.org/web/2025/https://www.qvc.com/",
+  "path": "web/2025/https/www-qvc.com",
+  "timestamp": "2026-04-13T22:20:59.776Z",
+  "title": "QVC | Shop QVC® For Today’s Special Value & Top Brands At The Official Site",
+  "template": "homepage",
+  "blocks": [
+    "hero-promo",
+    "cards-deal",
+    "cards-deal",
+    "cards-deal",
+    "cards-deal",
+    "cards-deal",
+    "cards-deal",
+    "carousel-product",
+    "carousel-product",
+    "columns-feature",
+    "columns-feature",
+    "columns-feature",
+    "columns-feature"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "variantName": "hero-promo",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-04-13T21:56:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.qvc.com",
+    "originPage": "QVC homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "promo-banner",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "full-width linked image",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "promotional landing pages",
+      "sale/event pages",
+      "homepage hero banners"
+    ],
+    "notSuitableFor": [
+      "text-heavy hero sections",
+      "hero with multiple CTAs"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-04-13T21:56:00.000Z"
+  }
+}
