@@ -1,20 +1,245 @@
+/* Footer — Walgreens multi-section footer */
+
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: var(--light-color, rgb(244, 242, 239));
+  font-size: var(--body-font-size-m, 16px);
+  font-family: var(--body-font-family);
+  color: var(--text-color);
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+footer .footer {
+  visibility: hidden;
 }
 
-footer .footer p {
+footer .footer[data-block-status="loaded"] {
+  visibility: visible;
+}
+
+footer p {
   margin: 0;
 }
 
+/* ---- Section 1: Email Sign-Up CTA ---- */
+footer .footer > div > div:first-child {
+  background-color: rgb(222, 213, 208);
+  text-align: center;
+  padding: 35px 16px;
+}
+
+footer .footer > div > div:first-child a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  padding: 0 20px;
+  height: 44px;
+  border-radius: 45px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+footer .footer > div > div:first-child a:hover {
+  background-color: var(--text-color);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ---- Section 2: Logo ---- */
+footer .footer > div > div:nth-child(2) {
+  text-align: center;
+  padding: 24px 0;
+}
+
+footer .footer > div > div:nth-child(2) img {
+  max-width: 173px;
+  height: auto;
+}
+
+/* ---- Section 3: 4-Column Link Grid ---- */
+footer .footer > div > div:nth-child(3) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 24px 24px 32px;
+}
+
+footer .footer > div > div:nth-child(3) > div {
+  padding: 0 0 16px;
+}
+
+footer .footer > div > div:nth-child(3) h2 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 16px 0 4px;
+  color: var(--text-color);
+  line-height: 1.4;
+  text-decoration: underline;
+}
+
+footer .footer > div > div:nth-child(3) h2:first-child {
+  margin-top: 0;
+}
+
+footer .footer > div > div:nth-child(3) h2 a {
+  color: var(--text-color);
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+footer .footer > div > div:nth-child(3) h2 a:hover {
+  color: var(--link-hover-color);
+}
+
+footer .footer > div > div:nth-child(3) ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer .footer > div > div:nth-child(3) li {
+  margin: 0;
+  padding: 3px 0;
+}
+
+footer .footer > div > div:nth-child(3) a {
+  color: var(--text-color);
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+footer .footer > div > div:nth-child(3) a:hover {
+  text-decoration: underline;
+  color: var(--link-hover-color);
+}
+
+/* ---- Section 4: Legal Links + Copyright ---- */
+footer .footer > div > div:nth-child(4) {
+  text-align: center;
+  padding: 33px 24px 40px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+footer .footer > div > div:nth-child(4) ul {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 0;
+}
+
+footer .footer > div > div:nth-child(4) li {
+  margin: 0;
+  padding: 0 12px;
+  border-left: 1px solid rgb(152, 144, 144);
+}
+
+footer .footer > div > div:nth-child(4) li:first-child {
+  border-left: none;
+}
+
+footer .footer > div > div:nth-child(4) a {
+  color: var(--text-color);
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+footer .footer > div > div:nth-child(4) a:hover {
+  color: var(--link-hover-color);
+}
+
+footer .footer > div > div:nth-child(4) p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* ---- Section 5: Bottom — Products + Disclaimer ---- */
+footer .footer > div > div:nth-child(5) {
+  border-top: 1px solid rgb(152, 144, 144);
+  padding: 50px 24px 32px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+footer .footer > div > div:nth-child(5) h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 20px 0 8px;
+  color: var(--text-color);
+}
+
+footer .footer > div > div:nth-child(5) h2:first-child {
+  margin-top: 0;
+}
+
+footer .footer > div > div:nth-child(5) ul {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+
+footer .footer > div > div:nth-child(5) li {
+  margin: 0;
+  padding: 0 8px 4px 0;
+  border-right: 1px solid rgb(152, 144, 144);
+}
+
+footer .footer > div > div:nth-child(5) li:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+footer .footer > div > div:nth-child(5) a {
+  color: var(--text-color);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+footer .footer > div > div:nth-child(5) a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+footer .footer > div > div:nth-child(5) p {
+  font-size: 16px;
+  color: var(--text-color);
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+/* ---- Responsive: Desktop (>= 900px) ---- */
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer .footer > div > div:nth-child(3) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 32px;
+    padding: 32px 0;
+  }
+
+  footer .footer > div > div:nth-child(5) {
+    display: flex;
+    gap: 40px;
+    padding: 50px 0 32px;
+  }
+}
+
+@media (width >= 600px) and (width < 900px) {
+  footer .footer > div > div:nth-child(3) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 24px;
+    padding: 32px 40px;
   }
 }
