@@ -1,0 +1,274 @@
+/* Deals Carousel - Walgreens "Deals of the Week" horizontal product carousel */
+
+.deals-carousel {
+  padding: var(--spacing-xl) 0 var(--spacing-l);
+  max-width: 1392px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+.deals-carousel .deals-carousel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 var(--spacing-l);
+  margin-bottom: var(--spacing-m);
+}
+
+.deals-carousel .deals-carousel-header-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-s);
+}
+
+.deals-carousel .deals-carousel-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.deals-carousel .deals-carousel-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.deals-carousel .deals-carousel-header-text h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 400;
+  color: var(--brand-red);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.deals-carousel .deals-carousel-subtitle {
+  width: 100%;
+  margin: 0 !important;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  line-height: 1.4;
+}
+
+.deals-carousel .deals-carousel-subtitle strong {
+  font-weight: 600;
+}
+
+.deals-carousel .deals-carousel-subtitle em {
+  color: var(--brand-red);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.deals-carousel .deals-carousel-header-action {
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.deals-carousel .deals-carousel-header-action a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.deals-carousel .deals-carousel-header-action a::after {
+  content: '›';
+  font-size: 1.4em;
+  line-height: 1;
+}
+
+.deals-carousel .deals-carousel-header-action a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* --- Slides container --- */
+.deals-carousel .deals-carousel-slides-container {
+  position: relative;
+}
+
+.deals-carousel .deals-carousel-slides {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--spacing-l);
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: auto hidden;
+  gap: var(--spacing-m);
+}
+
+.deals-carousel .deals-carousel-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Individual slide --- */
+.deals-carousel .deals-carousel-slide {
+  flex: 0 0 45%;
+  scroll-snap-align: start;
+  text-align: left;
+  min-width: 160px;
+  border: 1px solid var(--medium-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--background-color);
+  transition: box-shadow 0.2s ease;
+}
+
+.deals-carousel .deals-carousel-slide:hover {
+  box-shadow: 0 2px 12px rgb(0 0 0 / 10%);
+}
+
+/* Image area */
+.deals-carousel .deals-carousel-slide .deals-carousel-slide-image {
+  line-height: 0;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-m);
+  position: relative;
+  overflow: hidden;
+}
+
+.deals-carousel .deals-carousel-slide .deals-carousel-slide-image::before {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: #fbe8e8;
+  z-index: 0;
+}
+
+.deals-carousel .deals-carousel-slide:nth-child(2n) .deals-carousel-slide-image::before {
+  background-color: #e8f0fb;
+}
+
+.deals-carousel .deals-carousel-slide:nth-child(3n) .deals-carousel-slide-image::before {
+  background-color: #e8fbe8;
+}
+
+.deals-carousel .deals-carousel-slide:nth-child(4n) .deals-carousel-slide-image::before {
+  background-color: #fbe8f5;
+}
+
+.deals-carousel .deals-carousel-slide .deals-carousel-slide-image picture {
+  position: relative;
+  z-index: 1;
+}
+
+.deals-carousel .deals-carousel-slide .deals-carousel-slide-image picture > img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  max-height: 200px;
+}
+
+/* Content area */
+.deals-carousel .deals-carousel-slide .deals-carousel-slide-content {
+  padding: var(--spacing-s) var(--spacing-m) var(--spacing-m);
+}
+
+.deals-carousel .deals-carousel-slide .deals-carousel-slide-content p {
+  margin: var(--spacing-xs) 0;
+  font-size: var(--body-font-size-s);
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+.deals-carousel .deals-carousel-slide .deals-carousel-slide-content .deals-carousel-deal-price {
+  margin: 0 0 var(--spacing-xs);
+}
+
+.deals-carousel .deals-carousel-slide .deals-carousel-slide-content .deals-carousel-deal-price strong {
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.deals-carousel .deals-carousel-slide .deals-carousel-slide-content .deals-carousel-deal-desc {
+  margin: 0;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  line-height: 1.4;
+}
+
+/* --- Navigation buttons --- */
+.deals-carousel .deals-carousel-navigation-buttons {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  left: -8px;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.deals-carousel .deals-carousel-navigation-buttons button {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border-radius: 50%;
+  border: 1px solid var(--dark-color);
+  padding: 0;
+  background-color: rgb(255 255 255 / 90%);
+  transition: background-color 0.2s;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.deals-carousel .deals-carousel-navigation-buttons button:hover {
+  background-color: var(--light-color);
+}
+
+.deals-carousel .deals-carousel-navigation-buttons button::after {
+  display: block;
+  content: '';
+  border: 2px solid var(--text-color);
+  border-bottom: 0;
+  border-left: 0;
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.deals-carousel .deals-carousel-navigation-buttons button.slide-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 2px);
+}
+
+/* --- Responsive --- */
+@media (width >= 600px) {
+  .deals-carousel .deals-carousel-slide {
+    flex: 0 0 30%;
+  }
+}
+
+@media (width >= 900px) {
+  .deals-carousel .deals-carousel-slide {
+    flex: 0 0 18%;
+    min-width: 180px;
+  }
+
+  .deals-carousel .deals-carousel-icon img {
+    width: 44px;
+    height: 44px;
+  }
+}

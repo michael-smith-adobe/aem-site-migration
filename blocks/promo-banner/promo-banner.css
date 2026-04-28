@@ -1,0 +1,89 @@
+/* promo-banner block — full-bleed background via section */
+.promo-banner-container {
+  background-color: var(--light-color, rgb(244, 242, 239));
+}
+
+.promo-banner {
+  padding: 12px 0;
+}
+
+.promo-banner ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1440px;
+}
+
+.promo-banner li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 4px 2px rgb(65 61 60 / 10%);
+  min-height: 40px;
+  flex: 1 1 140px;
+  max-width: 332px;
+}
+
+.promo-banner .promo-banner-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.promo-banner .promo-banner-icon .icon img,
+.promo-banner .promo-banner-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.promo-banner .promo-banner-link {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: var(--text-color, rgb(65, 61, 60));
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.promo-banner a.promo-banner-link:hover {
+  color: var(--link-hover-color, #e1000f);
+  text-decoration: underline;
+}
+
+/* Mobile: 2 columns */
+@media (width < 600px) {
+  .promo-banner ul {
+    padding: 0 16px;
+  }
+
+  .promo-banner li {
+    flex: 1 1 calc(50% - 8px);
+    max-width: none;
+  }
+}
+
+/* Tablet and up: single row */
+@media (width >= 600px) {
+  .promo-banner ul {
+    flex-wrap: nowrap;
+    padding: 0 24px;
+  }
+
+  .promo-banner li {
+    flex: 1 1 0;
+  }
+}
+
+@media (width >= 900px) {
+  .promo-banner ul {
+    padding: 0 140px;
+  }
+}
