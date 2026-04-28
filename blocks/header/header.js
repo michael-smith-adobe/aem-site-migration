@@ -13,38 +13,18 @@ function toggleMenu(nav, forceExpanded = null) {
   if (button) button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
 }
 
-/**
- * Builds a two-row QVC-style header:
- * Row 1: Logo | Primary actions (Items On Air) | Search | Sign In | Cart
- * Row 2: Category links bar
- */
-function buildFallbackNav() {
-  const wrapper = document.createElement('div');
-  wrapper.innerHTML = `<div><p><a href="https://www.qvc.com"><img src="https://qvc.scene7.com/is/image/QVC/qvc-logo-rebrand?fmt=png-alpha" alt="QVC home"></a></p></div>
-<div><ul>
-<li><a href="https://www.qvc.com/content/featured/my-recommendations.html">Your Picks</a></li>
-<li><a href="https://www.qvc.com/collections/featured-new-this-month.html">New</a></li>
-<li><a href="https://www.qvc.com/collections/featured-trending-today.html">Trending Now</a></li>
-<li><a href="https://www.qvc.com/collections/holiday-mothers-day-gifts.html">Mother's Day Gift Guide</a></li>
-<li><a href="https://www.qvc.com/collections/deals-clearance.html">Clearance</a></li>
-<li><a href="https://www.qvc.com/c/garden-and-outdoor-living/-/gq7tw6/c.html">Garden</a></li>
-<li><a href="https://www.qvc.com/c/fashion/-/lglt/c.html">Fashion</a></li>
-<li><a href="https://www.qvc.com/c/beauty/-/rhty/c.html">Beauty</a></li>
-<li><a href="https://www.qvc.com/c/jewelry/-/mflu/c.html">Jewelry</a></li>
-<li><a href="https://www.qvc.com/c/shoes/-/1doux/c.html">Shoes</a></li>
-<li><a href="https://www.qvc.com/c/handbags-and-luggage/-/uoq0/c.html">Bags</a></li>
-<li><a href="https://www.qvc.com/c/for-the-home/-/lglu/c.html">Home</a></li>
-<li><a href="https://www.qvc.com/c/electronics/-/lglw/c.html">Electronics</a></li>
-<li><a href="https://www.qvc.com/c/kitchen-and-food/-/lglv/c.html">Kitchen</a></li>
-<li><a href="https://www.qvc.com/c/kitchen-and-food/food/-/1ciq2/c.html">Food &amp; Wine</a></li>
-</ul></div>
-<div><ul>
-<li><a href="https://www.qvc.com/content/iroa.html">Items On Air</a></li>
-<li><a href="https://www.qvc.com/myaccount/my-account.html">Sign In</a></li>
-</ul></div>`;
-  return [...wrapper.children];
+function closeAllDropdowns(nav) {
+  nav.querySelectorAll('.nav-dropdown-open').forEach((el) => {
+    el.classList.remove('nav-dropdown-open');
+  });
 }
 
+/**
+ * Builds a Walgreens-style header:
+ * Row 0: Promo banner (offers)
+ * Row 1: Logo | Search | Store | Account | Cart
+ * Row 2: Main navigation links (Pharmacy, Health Services, Shop, etc.)
+ */
 export default async function decorate(block) {
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
@@ -54,33 +34,50 @@ export default async function decorate(block) {
   const nav = document.createElement('nav');
   nav.id = 'nav';
 
-  // Collect sections from fragment (skip <hr> elements)
-  let sections = [];
+  // Collect sections from fragment (split by <hr>)
+  const sections = [];
   if (fragment) {
     while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
     nav.querySelectorAll(':scope > hr').forEach((hr) => hr.remove());
-    sections = [...nav.children];
+    sections.push(...nav.children);
   }
 
-  // Validate sections have expected content; fall back if not
-  const hasLogo = sections[0] && sections[0].querySelector('img');
-  const hasLinks = sections[1] && sections[1].querySelector('ul');
-  const hasTools = sections[2] && sections[2].querySelector('a');
-  if (!hasLogo || !hasLinks || !hasTools) {
-    sections = buildFallbackNav();
-  }
+  // Expected sections: [0] brand/logo, [1] promo, [2] nav links, [3] tools (account/cart)
+  const brandSection = sections[0] || null;
+  const promoSection = sections[1] || null;
+  const linksSection = sections[2] || null;
+  const toolsSection = sections[3] || null;
 
-  // Clear nav and rebuild with two-row structure
+  // Clear nav and rebuild
   nav.textContent = '';
 
-  // === Extract content from the 3 sections ===
-  const brandSection = sections[0]; // Logo
-  const linksSection = sections[1]; // Category links
-  const toolsSection = sections[2]; // Items On Air, Sign In
+  // === PROMO BANNER (Row 0) ===
+  const promoBanner = document.createElement('div');
+  promoBanner.className = 'nav-promo-banner';
+  if (promoSection) {
+    const ul = promoSection.querySelector('ul');
+    if (ul) {
+      const promoUl = ul.cloneNode(true);
+      promoUl.className = 'nav-promo-list';
+      promoUl.querySelectorAll('.button').forEach((btn) => { btn.className = ''; });
+      promoUl.querySelectorAll('.button-container').forEach((bc) => { bc.className = ''; });
+      promoBanner.append(promoUl);
+    }
+  }
+  nav.append(promoBanner);
 
-  // === ROW 1: Top bar (logo + primary actions + search + tools) ===
+  // === TOP ROW (Row 1): Logo | Search | Store | Account | Cart ===
   const topRow = document.createElement('div');
   topRow.className = 'nav-top-row';
+
+  // Hamburger (mobile)
+  const hamburger = document.createElement('div');
+  hamburger.classList.add('nav-hamburger');
+  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
+    <span class="nav-hamburger-icon"></span>
+  </button>`;
+  hamburger.addEventListener('click', () => toggleMenu(nav));
+  topRow.append(hamburger);
 
   // Brand (logo)
   const brand = document.createElement('div');
@@ -92,140 +89,150 @@ export default async function decorate(block) {
       const a = document.createElement('a');
       a.href = logoLink.href;
       a.className = 'nav-logo-link';
+      a.setAttribute('aria-label', 'Walgreens Home');
       const img = document.createElement('img');
       img.src = logoImg.src;
-      img.alt = logoImg.alt || 'QVC home';
+      img.alt = logoImg.alt || 'Walgreens: Trusted since 1901';
       img.className = 'nav-logo-icon';
       a.append(img);
-      const text = document.createElement('span');
-      text.className = 'nav-logo-text';
-      text.textContent = 'QVC';
-      a.append(text);
       brand.append(a);
     }
   }
   topRow.append(brand);
 
-  // Shop & Watch dropdown buttons
-  const shopWatch = document.createElement('div');
-  shopWatch.className = 'nav-primary-actions';
-
-  const shopBtn = document.createElement('button');
-  shopBtn.type = 'button';
-  shopBtn.className = 'nav-dropdown-btn';
-  shopBtn.innerHTML = 'Shop <span class="nav-caret"></span>';
-  shopWatch.append(shopBtn);
-
-  const watchBtn = document.createElement('button');
-  watchBtn.type = 'button';
-  watchBtn.className = 'nav-dropdown-btn';
-  watchBtn.innerHTML = 'Watch <span class="nav-caret"></span>';
-  shopWatch.append(watchBtn);
-
-  // Items On Air link
-  if (toolsSection) {
-    const toolLinks = toolsSection.querySelectorAll('a');
-    toolLinks.forEach((link) => {
-      if (link.textContent.trim().toLowerCase().includes('items')) {
-        const a = document.createElement('a');
-        a.href = link.href;
-        a.textContent = link.textContent.trim();
-        a.className = 'nav-action-link';
-        shopWatch.append(a);
-      }
-    });
-  }
-  topRow.append(shopWatch);
-
   // Search bar
   const searchBar = document.createElement('div');
   searchBar.className = 'nav-search';
-  searchBar.innerHTML = `<div class="nav-search-field">
-    <input type="text" placeholder="Enter Keyword or Item #" aria-label="Search">
-    <button type="button" aria-label="Search" class="nav-search-btn">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  searchBar.innerHTML = `<form class="nav-search-form">
+    <input type="text" placeholder="Search" aria-label="Search by keyword or item number" autocomplete="off">
+    <button type="submit" aria-label="Search" class="nav-search-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" fill="currentColor"/>
       </svg>
     </button>
-  </div>`;
+  </form>`;
   topRow.append(searchBar);
 
-  // Account tools (Sign In, Cart)
-  const accountTools = document.createElement('div');
-  accountTools.className = 'nav-account-tools';
+  // Store locator
+  const storeLocator = document.createElement('div');
+  storeLocator.className = 'nav-store';
+  storeLocator.innerHTML = `<a href="/store/findastore" class="nav-store-link" aria-label="Find a store">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+    </svg>
+    <span class="nav-store-text">Store</span>
+  </a>`;
+  topRow.append(storeLocator);
+
+  // Account
+  const accountSection = document.createElement('div');
+  accountSection.className = 'nav-account';
   if (toolsSection) {
     const toolLinks = toolsSection.querySelectorAll('a');
     toolLinks.forEach((link) => {
-      const text = link.textContent.trim();
-      if (!text.toLowerCase().includes('items')) {
+      if (link.textContent.trim().toLowerCase().includes('account')) {
         const a = document.createElement('a');
         a.href = link.href;
         a.className = 'nav-account-link';
-        // Add person icon for Sign In
-        if (text.toLowerCase().includes('sign')) {
-          a.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          </svg><span>${text}</span>`;
-        } else {
-          a.innerHTML = `<span>${text}</span>`;
-        }
-        accountTools.append(a);
+        a.setAttribute('aria-label', 'Account');
+        a.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg><span class="nav-account-text">Account</span>`;
+        accountSection.append(a);
       }
     });
   }
+  topRow.append(accountSection);
 
-  // Cart link
-  const cartLink = document.createElement('a');
-  cartLink.href = 'https://www.qvc.com/checkout/cart.html';
-  cartLink.className = 'nav-account-link nav-cart-link';
-  cartLink.innerHTML = `<span class="nav-cart-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6.6 13.5h11.8c.35 0 .69-.12.96-.35.27-.22.45-.54.51-.88L21 6H5.25" fill="currentColor"/>
-    <path d="M4.6 1.5h-2.1l3.4 14.4c.09.52.36.99.77 1.33.4.34.9.52 1.43.52h9.15" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <circle cx="8.6" cy="19.1" r="1.9" stroke="currentColor" stroke-width="1.5" fill="none"/>
-    <circle cx="17.6" cy="19.1" r="1.9" stroke="currentColor" stroke-width="1.5" fill="none"/>
-  </svg><span class="nav-cart-badge">0</span></span><span>Cart</span>`;
-  accountTools.append(cartLink);
-
-  topRow.append(accountTools);
+  // Cart
+  const cartSection = document.createElement('div');
+  cartSection.className = 'nav-cart';
+  if (toolsSection) {
+    const toolLinks = toolsSection.querySelectorAll('a');
+    toolLinks.forEach((link) => {
+      if (link.textContent.trim().toLowerCase().includes('cart')) {
+        const a = document.createElement('a');
+        a.href = link.href;
+        a.className = 'nav-cart-link';
+        a.setAttribute('aria-label', 'View shopping cart');
+        a.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.16 14.26l.04-.12.94-1.7h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0 0 20.04 4H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7.42a.25.25 0 0 1-.26-.24z" fill="currentColor"/>
+        </svg><span class="nav-cart-badge">0</span>`;
+        cartSection.append(a);
+      }
+    });
+  }
+  topRow.append(cartSection);
 
   nav.append(topRow);
 
-  // === ROW 2: Category links bar ===
+  // === BOTTOM ROW (Row 2): Main navigation links ===
   const bottomRow = document.createElement('div');
   bottomRow.className = 'nav-bottom-row';
   const bottomRowInner = document.createElement('div');
   bottomRowInner.className = 'nav-bottom-row-inner';
+
   if (linksSection) {
     const ul = linksSection.querySelector('ul');
     if (ul) {
-      const navUl = ul.cloneNode(true);
-      navUl.className = 'nav-category-links';
-      // Strip button classes that DA may have added
-      navUl.querySelectorAll('.button').forEach((btn) => { btn.className = ''; });
-      navUl.querySelectorAll('.button-container').forEach((bc) => { bc.className = ''; });
+      const navUl = document.createElement('ul');
+      navUl.className = 'nav-main-links';
+      const items = ul.querySelectorAll(':scope > li');
+      items.forEach((li) => {
+        const navLi = document.createElement('li');
+        navLi.className = 'nav-main-item';
+        const link = li.querySelector(':scope > a');
+        if (link) {
+          const subUl = li.querySelector(':scope > ul');
+          if (subUl) {
+            // Has dropdown
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'nav-main-link nav-has-dropdown';
+            btn.textContent = link.textContent.trim();
+            btn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const isOpen = navLi.classList.contains('nav-dropdown-open');
+              closeAllDropdowns(nav);
+              if (!isOpen) navLi.classList.add('nav-dropdown-open');
+            });
+            navLi.append(btn);
+
+            // Dropdown panel
+            const dropdown = document.createElement('div');
+            dropdown.className = 'nav-dropdown-panel';
+            const dropUl = document.createElement('ul');
+            dropUl.className = 'nav-dropdown-list';
+            subUl.querySelectorAll(':scope > li > a').forEach((subLink) => {
+              const dropLi = document.createElement('li');
+              const a = document.createElement('a');
+              a.href = subLink.href;
+              a.textContent = subLink.textContent.trim();
+              dropLi.append(a);
+              dropUl.append(dropLi);
+            });
+            dropdown.append(dropUl);
+            navLi.append(dropdown);
+          } else {
+            // Simple link
+            const a = document.createElement('a');
+            a.href = link.href;
+            a.className = 'nav-main-link';
+            a.textContent = link.textContent.trim();
+            navLi.append(a);
+          }
+        }
+        navUl.append(navLi);
+      });
       bottomRowInner.append(navUl);
     }
   }
-
-  // "Today's Special Value & Deals" link on the right
-  const tsvLink = document.createElement('a');
-  tsvLink.href = 'https://www.qvc.com/collections/deals-todays-special-value.html';
-  tsvLink.className = 'nav-tsv-deals';
-  tsvLink.innerHTML = '<span class="nav-tsv-highlight">Today\'s Special Value</span> &amp; Deals <span class="nav-caret"></span>';
-  bottomRowInner.append(tsvLink);
   bottomRow.append(bottomRowInner);
-
   nav.append(bottomRow);
 
-  // === HAMBURGER (mobile) ===
-  const hamburger = document.createElement('div');
-  hamburger.classList.add('nav-hamburger');
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
-    <span class="nav-hamburger-icon"></span>
-  </button>`;
-  hamburger.addEventListener('click', () => toggleMenu(nav));
-  topRow.prepend(hamburger);
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', () => closeAllDropdowns(nav));
 
   nav.setAttribute('aria-expanded', 'false');
   toggleMenu(nav, isDesktop.matches);
