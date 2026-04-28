@@ -1,0 +1,14 @@
+:root {
+  --heading-font-family: "Source Sans Pro", "Inter", sans-serif;
+  --body-font-family: "Source Sans Pro", "Inter", sans-serif;
+  --background-color: #ffffff;
+  --text-color: rgb(65, 61, 60);
+  --link-color: rgb(65, 61, 60);
+  --link-hover-color: #e1000f;
+  --section-padding: 0px;
+  --nav-height: 113px;
+  --color-brand-red: #e1000f;
+  --color-brand-bg-light: rgb(244, 242, 239);
+}
+
+html, body { overflow: auto !important; }
