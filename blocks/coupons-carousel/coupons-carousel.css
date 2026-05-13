@@ -1,0 +1,231 @@
+/* Coupons Carousel — BJ's Trending Coupons horizontal slider */
+
+.coupons-carousel {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-l) 0;
+}
+
+/* Header row */
+.coupons-carousel .coupons-carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-l);
+  margin-bottom: var(--spacing-m);
+}
+
+.coupons-carousel .coupons-carousel-title {
+  font-size: 22px;
+  font-weight: 400;
+  color: rgb(48, 48, 48);
+  text-transform: capitalize;
+  margin: 0;
+  line-height: 1;
+}
+
+.coupons-carousel .coupons-carousel-view-all {
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  color: rgb(48, 48, 48);
+  text-decoration: none;
+}
+
+.coupons-carousel .coupons-carousel-view-all:hover {
+  text-decoration: underline;
+}
+
+/* Carousel container */
+.coupons-carousel .coupons-carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Slides track */
+.coupons-carousel .coupons-carousel-slides {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--spacing-l);
+  display: flex;
+  gap: var(--spacing-m);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.coupons-carousel .coupons-carousel-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual slide/card */
+.coupons-carousel .coupons-carousel-slide {
+  flex: 0 0 268px;
+  scroll-snap-align: start;
+  border: 1px solid rgb(143, 143, 143);
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 220px;
+}
+
+/* Card header: discount + expiry */
+.coupons-carousel .coupons-carousel-card-header {
+  padding: var(--spacing-m) var(--spacing-m) 0;
+}
+
+.coupons-carousel .coupons-carousel-discount {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  line-height: 27px;
+}
+
+.coupons-carousel .coupons-carousel-discount strong {
+  font-weight: 500;
+}
+
+.coupons-carousel .coupons-carousel-expiry {
+  margin: 2px 0 0;
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  line-height: 21px;
+}
+
+/* Product area: image + description side by side */
+.coupons-carousel .coupons-carousel-product {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-s);
+  padding: var(--spacing-s) var(--spacing-m);
+  flex: 1;
+}
+
+.coupons-carousel .coupons-carousel-product-image {
+  flex-shrink: 0;
+}
+
+.coupons-carousel .coupons-carousel-product-image picture {
+  display: block;
+  line-height: 0;
+}
+
+.coupons-carousel .coupons-carousel-product-image img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.coupons-carousel .coupons-carousel-description {
+  margin: 0;
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  line-height: 21px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Clip coupon button */
+.coupons-carousel .coupons-carousel-action {
+  padding: 0 var(--spacing-m) var(--spacing-m);
+  text-align: center;
+}
+
+.coupons-carousel .coupons-carousel-action p {
+  margin: 0;
+}
+
+.coupons-carousel .coupons-carousel-action a.coupons-carousel-clip-btn,
+.coupons-carousel .coupons-carousel-action a:any-link {
+  display: block;
+  background-color: rgb(85, 85, 85);
+  color: #fff;
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 5px;
+  line-height: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.coupons-carousel .coupons-carousel-action a:hover {
+  background-color: rgb(60, 60, 60);
+  text-decoration: none;
+}
+
+/* Navigation arrows */
+.coupons-carousel .coupons-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--dark-color);
+  background-color: rgb(255 255 255 / 90%);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.coupons-carousel .coupons-carousel-arrow:hover {
+  background-color: var(--light-color);
+}
+
+.coupons-carousel .coupons-carousel-arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.coupons-carousel .coupons-carousel-arrow::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border: 2px solid rgb(48, 48, 48);
+  border-bottom: 0;
+  border-left: 0;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.coupons-carousel .coupons-carousel-arrow-prev {
+  left: 4px;
+}
+
+.coupons-carousel .coupons-carousel-arrow-next {
+  right: 4px;
+}
+
+.coupons-carousel .coupons-carousel-arrow-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 2px);
+}
+
+/* Responsive */
+@media (width >= 600px) {
+  .coupons-carousel .coupons-carousel-slide {
+    flex: 0 0 240px;
+  }
+}
+
+@media (width >= 900px) {
+  .coupons-carousel .coupons-carousel-slide {
+    flex: 0 0 268px;
+  }
+}

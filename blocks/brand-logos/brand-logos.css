@@ -1,0 +1,82 @@
+/* Brand Logos — 4-column grid of linked brand logo cards with CTA */
+
+.brand-logos > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-m);
+  justify-items: center;
+}
+
+.brand-logos > ul > li {
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+
+.brand-logos .brand-logos-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: var(--spacing-s);
+  transition: opacity 0.2s ease;
+}
+
+.brand-logos .brand-logos-link:hover {
+  opacity: 0.8;
+}
+
+.brand-logos .brand-logos-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.brand-logos .brand-logos-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.brand-logos .brand-logos-body {
+  padding-top: var(--spacing-s);
+}
+
+.brand-logos .brand-logos-body p {
+  margin: 0;
+  font-size: var(--body-font-size-s);
+  color: var(--link-color);
+  text-transform: capitalize;
+}
+
+.brand-logos .brand-logos-body a {
+  font-size: var(--body-font-size-s);
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.brand-logos .brand-logos-body a:hover {
+  text-decoration: underline;
+  color: var(--link-hover-color);
+}
+
+@media (width >= 600px) {
+  .brand-logos > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .brand-logos > ul {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-l);
+  }
+}

@@ -1,89 +1,181 @@
-/* promo-banner block — full-bleed background via section */
+/* Promo Banner — full-width promotional banner with background, lockup overlay, and card carousel */
+
 .promo-banner-container {
-  background-color: var(--light-color, rgb(244, 242, 239));
+  padding: 0;
+}
+
+.promo-banner-container .promo-banner-wrapper {
+  max-width: unset;
+  padding: 0;
 }
 
 .promo-banner {
-  padding: 12px 0;
-}
-
-.promo-banner ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  list-style: none;
-  margin: 0 auto;
   padding: 0;
-  max-width: 1440px;
 }
 
-.promo-banner li {
+.promo-banner > div {
+  padding: 0;
+}
+
+/* Each banner row */
+.promo-banner .promo-banner-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 180px;
+  padding: var(--spacing-l) var(--spacing-m);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.promo-banner .promo-banner-row + .promo-banner-row {
+  margin-top: var(--spacing-m);
+}
+
+/* Lockup overlay (centered promotional image) */
+.promo-banner .promo-banner-lockup {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 1380px;
+  width: 100%;
+  padding: 0;
+}
+
+.promo-banner .promo-banner-lockup a {
+  display: block;
+  text-decoration: none;
+}
+
+.promo-banner .promo-banner-lockup picture {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.promo-banner .promo-banner-lockup img {
+  display: block;
+  width: 100%;
+  max-width: 1380px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Carousel section */
+.promo-banner .promo-banner-carousel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1380px;
+  padding: var(--spacing-s) 0 0;
+}
+
+.promo-banner .promo-banner-track {
+  display: flex;
+  gap: var(--spacing-m);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: var(--spacing-xs) var(--spacing-s) var(--spacing-m);
+}
+
+.promo-banner .promo-banner-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual card */
+.promo-banner .promo-banner-card {
+  flex: 0 0 auto;
+  width: 200px;
+  text-align: center;
+}
+
+.promo-banner .promo-banner-card a {
+  display: block;
+  text-decoration: none;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promo-banner .promo-banner-card a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+
+.promo-banner .promo-banner-card picture {
+  display: block;
+  line-height: 0;
+}
+
+.promo-banner .promo-banner-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.promo-banner .promo-banner-card-label {
+  display: block;
+  margin-top: var(--spacing-xs);
+  font-size: var(--body-font-size-s);
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Navigation arrows */
+.promo-banner .promo-banner-nav {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  padding: 0 var(--spacing-xs);
+  transform: translateY(50%);
+}
+
+.promo-banner .promo-banner-nav button {
+  pointer-events: auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-color, #cc0000);
+  background: #fff;
+  color: var(--accent-color, #cc0000);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  background: #fff;
-  border-radius: 8px;
-  padding: 8px 12px;
-  box-shadow: 0 2px 4px 2px rgb(65 61 60 / 10%);
-  min-height: 40px;
-  flex: 1 1 140px;
-  max-width: 332px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+  transition: background 0.2s ease;
 }
 
-.promo-banner .promo-banner-icon {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+.promo-banner .promo-banner-nav button:hover {
+  background: var(--accent-color, #cc0000);
+  color: #fff;
 }
 
-.promo-banner .promo-banner-icon .icon img,
-.promo-banner .promo-banner-icon img {
-  width: 20px;
-  height: 20px;
-}
-
-.promo-banner .promo-banner-link {
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 15px;
-  color: var(--text-color, rgb(65, 61, 60));
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.promo-banner a.promo-banner-link:hover {
-  color: var(--link-hover-color, #e1000f);
-  text-decoration: underline;
-}
-
-/* Mobile: 2 columns */
-@media (width < 600px) {
-  .promo-banner ul {
-    padding: 0 16px;
-  }
-
-  .promo-banner li {
-    flex: 1 1 calc(50% - 8px);
-    max-width: none;
-  }
-}
-
-/* Tablet and up: single row */
-@media (width >= 600px) {
-  .promo-banner ul {
-    flex-wrap: nowrap;
-    padding: 0 24px;
-  }
-
-  .promo-banner li {
-    flex: 1 1 0;
-  }
-}
-
+/* Responsive */
 @media (width >= 900px) {
-  .promo-banner ul {
-    padding: 0 140px;
+  .promo-banner .promo-banner-row {
+    min-height: 220px;
+    padding: var(--spacing-xl) var(--spacing-l);
+  }
+
+  .promo-banner .promo-banner-card {
+    width: 260px;
+  }
+
+  .promo-banner .promo-banner-nav button {
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
   }
 }

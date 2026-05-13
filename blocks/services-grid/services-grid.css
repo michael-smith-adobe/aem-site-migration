@@ -1,0 +1,129 @@
+/* services-grid block — 6-column services icon grid */
+
+.services-grid > ul {
+  list-style: none;
+  margin: 0;
+  padding: 16px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 16px;
+  justify-items: center;
+}
+
+.services-grid > ul > li {
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+}
+
+.services-grid .services-grid-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.services-grid .services-grid-tile:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.services-grid .services-grid-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 12px;
+}
+
+.services-grid .services-grid-icon picture {
+  display: block;
+  line-height: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.services-grid .services-grid-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.services-grid .services-grid-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.services-grid .services-grid-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+  line-height: 1.3;
+}
+
+.services-grid .services-grid-cta {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--accent-color, #cc0033);
+}
+
+.services-grid .services-grid-cta span {
+  color: var(--accent-color, #cc0033);
+  text-decoration: none;
+}
+
+.services-grid .services-grid-tile:hover .services-grid-cta span {
+  text-decoration: underline;
+}
+
+/* tablet: 3 columns */
+@media (min-width: 600px) {
+  .services-grid > ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .services-grid .services-grid-icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .services-grid .services-grid-title {
+    font-size: 15px;
+  }
+
+  .services-grid .services-grid-cta {
+    font-size: 13px;
+  }
+}
+
+/* desktop: 6 columns */
+@media (min-width: 900px) {
+  .services-grid > ul {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px 8px;
+    padding: 24px 0;
+  }
+
+  .services-grid > ul > li {
+    max-width: 216px;
+  }
+
+  .services-grid .services-grid-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 16px;
+  }
+
+  .services-grid .services-grid-title {
+    font-size: 18px;
+  }
+
+  .services-grid .services-grid-cta {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,102 @@
+/* Exclusive Brands - BJ's own brands showcase with background image */
+
+.exclusive-brands-container .exclusive-brands-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.exclusive-brands {
+  background-image: url('https://bjs.scene7.com/is/image/bjs/Evergreen_AppCC_BG_OB_FY27');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: var(--spacing-l) var(--spacing-m);
+  text-align: center;
+}
+
+/* Banner row: header image (logo + "Exclusively at BJ's") */
+.exclusive-brands .exclusive-brands-banner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-l);
+}
+
+.exclusive-brands .exclusive-brands-banner > div {
+  display: flex;
+  justify-content: center;
+}
+
+.exclusive-brands .exclusive-brands-banner img {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Cards grid */
+.exclusive-brands .exclusive-brands-cards {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-m);
+  max-width: 1380px;
+}
+
+.exclusive-brands .exclusive-brands-card {
+  background: transparent;
+  text-align: center;
+}
+
+.exclusive-brands .exclusive-brands-card > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exclusive-brands .exclusive-brands-card img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.exclusive-brands .exclusive-brands-card p {
+  margin: var(--spacing-s) 0 0;
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  color: rgb(34, 34, 34);
+}
+
+.exclusive-brands .exclusive-brands-card a:any-link {
+  color: rgb(34, 34, 34);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.exclusive-brands .exclusive-brands-card a:hover {
+  text-decoration: underline;
+}
+
+@media (width >= 600px) {
+  .exclusive-brands .exclusive-brands-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .exclusive-brands {
+    padding: var(--spacing-l) var(--spacing-xl);
+  }
+
+  .exclusive-brands .exclusive-brands-cards {
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--spacing-l);
+  }
+
+  .exclusive-brands .exclusive-brands-card img {
+    max-width: 100%;
+  }
+}

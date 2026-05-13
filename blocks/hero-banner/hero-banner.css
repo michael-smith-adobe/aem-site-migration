@@ -1,0 +1,51 @@
+/* Hero Banner - Full-width promotional banner with background image */
+
+.hero-banner-container .hero-banner-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-banner {
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #cc0033;
+}
+
+.hero-banner .hero-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.hero-banner .hero-banner-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.hero-banner picture {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.hero-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (width >= 900px) {
+  .hero-banner {
+    min-height: 320px;
+  }
+}

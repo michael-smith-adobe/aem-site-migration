@@ -1,0 +1,153 @@
+/* Deals Hub - Category deal tiles on colorful background */
+
+main .section.deals-hub-container {
+  background-color: var(--color-brand-red);
+  background-image: url('/drafts/images/deals-hub-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: var(--spacing-l) 0;
+}
+
+main .section.deals-hub-container > .deals-hub-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.deals-hub > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--spacing-m);
+  display: flex;
+  gap: var(--spacing-m);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.deals-hub > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.deals-hub > ul > li {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.deals-hub > ul > li.deals-hub-banner-item {
+  flex: 0 0 280px;
+}
+
+.deals-hub > ul > li:not(.deals-hub-banner-item) {
+  flex: 0 0 160px;
+}
+
+/* Banner image (hero tile) */
+.deals-hub-banner {
+  width: 100%;
+  height: 100%;
+}
+
+.deals-hub-banner a {
+  display: block;
+  height: 100%;
+}
+
+.deals-hub-banner img,
+.deals-hub-banner picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Individual deal cards */
+.deals-hub-card-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.deals-hub-card-image {
+  width: 100%;
+  line-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.deals-hub-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.deals-hub-card-link:hover .deals-hub-card-image img {
+  transform: scale(1.03);
+}
+
+.deals-hub-card-label {
+  margin-top: var(--spacing-s);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.deals-hub-card-link:hover .deals-hub-card-label {
+  text-decoration: none;
+}
+
+@media (width >= 600px) {
+  .deals-hub > ul {
+    padding: 0 var(--spacing-l);
+    gap: var(--spacing-l);
+  }
+
+  .deals-hub > ul > li.deals-hub-banner-item {
+    flex: 0 0 320px;
+  }
+
+  .deals-hub > ul > li:not(.deals-hub-banner-item) {
+    flex: 0 0 180px;
+  }
+}
+
+@media (width >= 900px) {
+  main .section.deals-hub-container {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .deals-hub > ul {
+    padding: 0 var(--spacing-xl);
+    gap: var(--spacing-l);
+  }
+
+  .deals-hub > ul > li.deals-hub-banner-item {
+    flex: 0 0 280px;
+  }
+
+  .deals-hub > ul > li:not(.deals-hub-banner-item) {
+    flex: 0 0 160px;
+  }
+}
+
+@media (width >= 1200px) {
+  .deals-hub > ul {
+    padding: 0 40px;
+  }
+
+  .deals-hub > ul > li.deals-hub-banner-item {
+    flex: 0 0 320px;
+  }
+
+  .deals-hub > ul > li:not(.deals-hub-banner-item) {
+    flex: 0 0 175px;
+  }
+}
