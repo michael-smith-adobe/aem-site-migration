@@ -1,44 +1,34 @@
 @import url('brand.css');
 
 /*
- * Walgreens Design System - Migrated from walgreens.com
- * Colors, typography, spacing, buttons, links, and section styles
+ * BJ's Wholesale Club Design System - Migrated from bjs.com
  */
 
 :root {
-  /* brand colors */
-  --brand-red: #e1000f;
-  --brand-bg-light: rgb(244, 242, 239);
-
-  /* colors */
   --background-color: #ffffff;
-  --light-color: rgb(244, 242, 239);
-  --medium-color: #e8e4e0;
-  --dark-color: #c8c4c0;
-  --text-color: rgb(65, 61, 60);
-  --heading-color: rgb(65, 61, 60);
-  --link-color: rgb(65, 61, 60);
-  --link-hover-color: #e1000f;
-  --accent-color: #e1000f;
+  --light-color: #f5f5f5;
+  --medium-color: #e8e8e8;
+  --dark-color: #cccccc;
+  --text-color: rgb(33, 37, 41);
+  --heading-color: rgb(33, 37, 41);
+  --link-color: rgb(0, 123, 255);
+  --link-hover-color: rgb(0, 86, 179);
+  --accent-color: #cc0000;
 
-  /* fonts */
-  --body-font-family: "Source Sans Pro", "Inter", sans-serif;
-  --heading-font-family: "Source Sans Pro", "Inter", sans-serif;
+  --body-font-family: "Roboto", Arial, sans-serif;
+  --heading-font-family: "Roboto", Arial, sans-serif;
 
-  /* body sizes */
   --body-font-size-m: 16px;
   --body-font-size-s: 14px;
   --body-font-size-xs: 12px;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 28px;
-  --heading-font-size-xl: 22px;
-  --heading-font-size-l: 18px;
-  --heading-font-size-m: 16px;
-  --heading-font-size-s: 14px;
-  --heading-font-size-xs: 12px;
+  --heading-font-size-xxl: 36px;
+  --heading-font-size-xl: 28px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
 
-  /* spacing */
   --spacing-xs: 4px;
   --spacing-s: 8px;
   --spacing-m: 16px;
@@ -46,14 +36,12 @@
   --spacing-xl: 40px;
   --spacing-xxl: 60px;
 
-  /* buttons */
   --button-padding: 10px 24px;
   --button-font-size: 14px;
   --button-border-radius: 4px;
   --button-transition: all 0.2s ease;
 
-  /* nav height */
-  --nav-height: 113px;
+  --nav-height: 192px;
 }
 
 main .button-container { display: inline; }
@@ -65,12 +53,12 @@ main a.button:any-link {
 
 @media (width >= 900px) {
   :root {
-    --heading-font-size-xxl: 32px;
-    --heading-font-size-xl: 28px;
-    --heading-font-size-l: 22px;
-    --heading-font-size-m: 18px;
-    --heading-font-size-s: 16px;
-    --heading-font-size-xs: 14px;
+    --heading-font-size-xxl: 40px;
+    --heading-font-size-xl: 32px;
+    --heading-font-size-l: 28px;
+    --heading-font-size-m: 24px;
+    --heading-font-size-s: 20px;
+    --heading-font-size-xs: 16px;
   }
 }
 
@@ -85,31 +73,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body.appear {
-  display: block;
-}
+body.appear { display: block; }
 
-header {
-  height: auto;
-}
+header { height: auto; }
 
 header .header,
-footer .footer {
-  visibility: hidden;
-}
+footer .footer { visibility: hidden; }
 
 header .header[data-block-status="loaded"],
-footer .footer[data-block-status="loaded"] {
-  visibility: visible;
-}
+footer .footer[data-block-status="loaded"] { visibility: visible; }
 
-/* headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
@@ -122,57 +96,19 @@ h6 {
 h1 { font-size: var(--heading-font-size-xxl); }
 h2 { font-size: var(--heading-font-size-xl); }
 h3 { font-size: var(--heading-font-size-l); }
+h4 { font-size: var(--heading-font-size-m); font-weight: 700; }
+h5 { font-size: var(--heading-font-size-s); font-weight: 700; }
+h6 { font-size: var(--heading-font-size-xs); font-weight: 700; }
 
-h4 {
-  font-size: var(--heading-font-size-m);
-  font-weight: 700;
-}
-
-h5 {
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
-}
-
-h6 {
-  font-size: var(--heading-font-size-xs);
-  font-weight: 700;
-}
-
-p,
-dl,
-ol,
-ul,
-pre,
-blockquote {
+p, dl, ol, ul, pre, blockquote {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
 }
 
-code,
-pre {
-  font-size: var(--body-font-size-s);
-}
+main > div { margin: 0; }
 
-pre {
-  padding: 16px;
-  border-radius: 4px;
-  background-color: var(--light-color);
-  overflow-x: auto;
-  white-space: pre;
-}
+input, textarea, select, button { font: inherit; }
 
-main > div {
-  margin: 0;
-}
-
-input,
-textarea,
-select,
-button {
-  font: inherit;
-}
-
-/* links */
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
@@ -185,42 +121,22 @@ a:hover {
   text-decoration: underline;
 }
 
-/* images */
 main img {
   max-width: 100%;
   width: auto;
   height: auto;
 }
 
-.icon {
-  display: inline-block;
-  height: 24px;
-  width: 24px;
-}
+.icon { display: inline-block; height: 24px; width: 24px; }
+.icon img { height: 100%; width: 100%; }
 
-.icon img {
-  height: 100%;
-  width: 100%;
-}
-
-/* sections */
-main > .section {
-  margin: 0;
-  padding: 0;
-}
+main > .section { margin: 0; padding: 0; }
 
 main > .section > div {
   max-width: 1440px;
   margin: auto;
 }
 
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0;
-  }
-}
-
-/* section variants */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
@@ -229,21 +145,15 @@ main .section.highlight {
 }
 
 main .section.dark {
-  background-color: var(--brand-red);
+  background-color: var(--color-brand-navy);
   color: #fff;
   margin: 0;
   padding: var(--spacing-xl) 0;
 }
 
-main .section.dark h1,
-main .section.dark h2,
-main .section.dark h3,
-main .section.dark h4,
-main .section.dark h5,
-main .section.dark h6 {
+main .section.red {
+  background-color: var(--color-brand-red);
   color: #fff;
-}
-
-main .section.dark a:any-link {
-  color: #fff;
+  margin: 0;
+  padding: var(--spacing-xl) 0;
 }
