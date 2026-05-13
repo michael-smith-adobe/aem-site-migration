@@ -1,14 +1,16 @@
 :root {
-  --heading-font-family: "Source Sans Pro", "Inter", sans-serif;
-  --body-font-family: "Source Sans Pro", "Inter", sans-serif;
+  --heading-font-family: "Roboto", Arial, sans-serif;
+  --body-font-family: "Roboto", Arial, sans-serif;
   --background-color: #ffffff;
-  --text-color: rgb(65, 61, 60);
-  --link-color: rgb(65, 61, 60);
-  --link-hover-color: #e1000f;
+  --text-color: rgb(33, 37, 41);
+  --link-color: rgb(0, 123, 255);
+  --link-hover-color: rgb(0, 86, 179);
   --section-padding: 0px;
-  --nav-height: 113px;
-  --color-brand-red: #e1000f;
-  --color-brand-bg-light: rgb(244, 242, 239);
+  --nav-height: 192px;
+  --color-brand-red: #cc0000;
+  --color-brand-navy: #003087;
+  --color-brand-yellow: #ffd700;
+  --color-light-bg: #f5f5f5;
 }
 
 html, body { overflow: auto !important; }
