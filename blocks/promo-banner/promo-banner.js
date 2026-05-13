@@ -1,44 +1,113 @@
 /**
  * Promo Banner Block
- * Displays a horizontal row of icon+text quick-link pills.
- * Each row in the block table is one pill: icon (col 1), linked text (col 2).
+ *
+ * Each row in the block represents one promotional banner.
+ * Row structure (3 columns):
+ *   Col 1: Background image (<picture>)
+ *   Col 2: Lockup/overlay image with optional link
+ *   Col 3: Carousel cards — multiple <p> elements each containing a linked image
+ *
+ * The block renders as a full-width banner with a background image,
+ * a centered promotional lockup overlaid on top, and a horizontally
+ * scrolling card carousel beneath the lockup.
  */
 export default function decorate(block) {
-  const items = [...block.querySelectorAll(':scope > div')];
-  const list = document.createElement('ul');
+  const rows = [...block.querySelectorAll(':scope > div')];
 
-  items.forEach((row) => {
-    const cols = [...row.children];
-    const li = document.createElement('li');
+  rows.forEach((row) => {
+    const columns = [...row.querySelectorAll(':scope > div')];
+    if (columns.length < 2) return;
 
-    // Column 1: icon (may be a span.icon or a picture/img)
-    const iconCol = cols[0];
-    const icon = iconCol?.querySelector('.icon, picture, img');
-    if (icon) {
-      const iconWrap = document.createElement('span');
-      iconWrap.className = 'promo-banner-icon';
-      iconWrap.append(icon);
-      li.append(iconWrap);
+    const [bgCol, lockupCol, carouselCol] = columns;
+
+    // Background image
+    const bgPicture = bgCol.querySelector('picture');
+    if (bgPicture) {
+      const bgImg = bgPicture.querySelector('img');
+      if (bgImg) {
+        row.style.backgroundImage = `url('${bgImg.src}')`;
+        row.style.backgroundSize = 'cover';
+        row.style.backgroundPosition = 'center';
+      }
+      bgCol.remove();
     }
 
-    // Column 2: link text
-    const textCol = cols[1];
-    if (textCol) {
-      const link = textCol.querySelector('a');
-      if (link) {
-        link.className = 'promo-banner-link';
-        li.append(link);
-      } else {
-        const span = document.createElement('span');
-        span.className = 'promo-banner-link';
-        span.textContent = textCol.textContent.trim();
-        li.append(span);
+    // Lockup overlay
+    if (lockupCol) {
+      lockupCol.classList.add('promo-banner-lockup');
+      const lockupLink = lockupCol.querySelector('a');
+      const lockupPicture = lockupCol.querySelector('picture');
+      if (lockupLink && lockupPicture) {
+        // Wrap picture inside the link
+        lockupLink.textContent = '';
+        lockupLink.append(lockupPicture);
+        lockupCol.textContent = '';
+        lockupCol.append(lockupLink);
       }
     }
 
-    list.append(li);
-  });
+    // Carousel
+    if (carouselCol) {
+      carouselCol.classList.add('promo-banner-carousel');
+      const cards = [...carouselCol.querySelectorAll('p')].filter(
+        (p) => p.querySelector('a') || p.querySelector('picture'),
+      );
 
-  block.textContent = '';
-  block.append(list);
+      if (cards.length > 0) {
+        const track = document.createElement('div');
+        track.className = 'promo-banner-track';
+
+        cards.forEach((card) => {
+          const cardEl = document.createElement('div');
+          cardEl.className = 'promo-banner-card';
+
+          const link = card.querySelector('a');
+          const picture = card.querySelector('picture');
+
+          if (link && picture) {
+            link.textContent = '';
+            link.append(picture);
+            cardEl.append(link);
+            // Add label below card
+            const img = picture.querySelector('img');
+            if (img && img.alt) {
+              const label = document.createElement('span');
+              label.className = 'promo-banner-card-label';
+              label.textContent = img.alt;
+              cardEl.append(label);
+            }
+          } else if (link) {
+            cardEl.append(link.cloneNode(true));
+          } else if (picture) {
+            cardEl.append(picture);
+          }
+
+          track.append(cardEl);
+        });
+
+        // Navigation arrows
+        const nav = document.createElement('div');
+        nav.className = 'promo-banner-nav';
+        nav.innerHTML = `
+          <button class="promo-banner-prev" aria-label="Previous">&lsaquo;</button>
+          <button class="promo-banner-next" aria-label="Next">&rsaquo;</button>
+        `;
+
+        carouselCol.textContent = '';
+        carouselCol.append(track, nav);
+
+        // Scroll behavior
+        const prevBtn = nav.querySelector('.promo-banner-prev');
+        const nextBtn = nav.querySelector('.promo-banner-next');
+        prevBtn.addEventListener('click', () => {
+          track.scrollBy({ left: -280, behavior: 'smooth' });
+        });
+        nextBtn.addEventListener('click', () => {
+          track.scrollBy({ left: 280, behavior: 'smooth' });
+        });
+      }
+    }
+
+    row.classList.add('promo-banner-row');
+  });
 }
