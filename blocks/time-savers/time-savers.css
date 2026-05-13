@@ -1,0 +1,105 @@
+/* Time Savers — centered logo, tagline, and 3 pill-shaped CTA buttons */
+
+.time-savers {
+  text-align: center;
+  padding: 8px 16px 24px;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+/* Header: logo + tagline */
+.time-savers .time-savers-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.time-savers .time-savers-header > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-savers .time-savers-header picture,
+.time-savers .time-savers-header img {
+  width: 300px;
+  max-width: 70%;
+  height: auto;
+  display: block;
+}
+
+.time-savers .time-savers-header p {
+  color: #6b727f;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: var(--body-font-family);
+  margin: 8px 0 0;
+  line-height: 1.4;
+}
+
+/* CTA items row */
+.time-savers .time-savers-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.time-savers .time-savers-item {
+  display: inline-flex;
+}
+
+.time-savers .time-savers-link {
+  display: inline-flex;
+  align-items: center;
+  background-color: #dc3545;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--body-font-family);
+  border-radius: 50px;
+  padding: 5px 20px 5px 5px;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.time-savers .time-savers-link:hover {
+  background-color: #c82333;
+  color: #fff;
+  text-decoration: none;
+}
+
+.time-savers .time-savers-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.time-savers .time-savers-icon picture,
+.time-savers .time-savers-icon img {
+  width: 2rem;
+  height: auto;
+  display: block;
+}
+
+.time-savers .time-savers-text {
+  line-height: 1;
+}
+
+/* Mobile */
+@media (width < 900px) {
+  .time-savers .time-savers-header p {
+    font-size: 1.2rem;
+  }
+
+  .time-savers .time-savers-items {
+    flex-direction: column;
+    align-items: center;
+  }
+}
